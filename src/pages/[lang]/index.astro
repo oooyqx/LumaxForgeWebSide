@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import ProductCard from "../../components/ProductCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { LANGS, TEXT, type Lang } from "../../lib/i18n";
+
+export async function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = TEXT[lang];
+const products = (await getCollection("products", ({ data }) => data.lang === lang)).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title)
+);
+---
+
+<BaseLayout lang={lang} title={`${t.siteName} | ${t.navHome}`} description={t.heroSubtitle}>
+  <section class="hero">
+    <h1>{t.heroTitle}</h1>
+    <p>{t.heroSubtitle}</p>
+    <div class="chip-row">
+      <span class="chip">Astro SSG</span>
+      <span class="chip">Cloudflare Pages</span>
+      <span class="chip">MDX</span>
+      <span class="chip">Asset Store Plugins</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>{t.productsTitle}</h2>
+    <p>{t.productsSubtitle}</p>
+    <div class="products-grid">
+      {products.map((product) => <ProductCard lang={lang} product={product} />)}
+    </div>
+  </section>
+</BaseLayout>

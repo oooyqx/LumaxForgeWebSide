@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="b" x1="0" x2="1" y1="1" y2="0">
+      <stop offset="0%" stop-color="#111a2b" />
+      <stop offset="100%" stop-color="#0f2d47" />
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#b)" />
+  <g opacity="0.8">
+    <circle cx="340" cy="380" r="170" fill="none" stroke="#2dd4bf" stroke-width="20" />
+    <path d="M340 210 A170 170 0 0 1 500 430" fill="none" stroke="#5fb3ff" stroke-width="20" />
+  </g>
+  <g fill="#e7edf8" font-family="IBM Plex Sans, Segoe UI, sans-serif">
+    <text x="580" y="320" font-size="56">Charts for Unity</text>
+    <text x="580" y="380" font-size="32" fill="#9cabbe">Runtime + Editor Workflow</text>
+  </g>
+</svg>

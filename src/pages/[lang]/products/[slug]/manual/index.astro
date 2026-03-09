@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../../../layouts/BaseLayout.astro";
+import { TEXT, type Lang } from "../../../../../lib/i18n";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("manuals");
+  const keys = new Set(entries.map((entry) => `${entry.data.lang}::${entry.data.productSlug}`));
+  return Array.from(keys).map((key) => {
+    const [lang, slug] = key.split("::");
+    return { params: { lang, slug } };
+  });
+}
+
+const { lang, slug } = Astro.params as { lang: Lang; slug: string };
+const t = TEXT[lang];
+const chapters = (await getCollection("manuals", ({ data }) => data.lang === lang && data.productSlug === slug)).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+if (chapters.length === 0) {
+  throw new Error(`No manual chapters found for ${lang}/${slug}`);
+}
+
+const first = chapters[0];
+---
+
+<BaseLayout lang={lang} title={`${slug} ${t.manualTitle} | ${t.siteName}`} description={t.manualTitle}>
+  <section class="hero">
+    <h1>{slug} {t.manualTitle}</h1>
+    <p>{t.chapterList}</p>
+    <div class="card-actions">
+      <a class="btn" href={`/${lang}/products/${slug}`}>{t.backToProduct}</a>
+    </div>
+  </section>
+
+  <div class="manual-layout">
+    <aside class="panel chapter-nav">
+      <h3>{t.chapterList}</h3>
+      {chapters.map((chapter) => (
+        <a href={`/${lang}/products/${slug}/manual/${chapter.data.chapterSlug}`}>{chapter.data.title}</a>
+      ))}
+    </aside>
+
+    <article class="panel prose">
+      <p>
+        This is the manual chapter index. Open the first chapter:
+        <a href={`/${lang}/products/${slug}/manual/${first.data.chapterSlug}`}> {first.data.title}</a>
+      </p>
+    </article>
+  </div>
+</BaseLayout>

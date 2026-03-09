@@ -1,0 +1,71 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { mdxComponents } from "../../../components/mdx-components";
+import { TEXT, type Lang } from "../../../lib/i18n";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("products");
+  return entries.map((entry) => ({
+    params: { lang: entry.data.lang, slug: entry.data.productSlug },
+    props: { entry }
+  }));
+}
+
+const { lang } = Astro.params as { lang: Lang; slug: string };
+const { entry } = Astro.props;
+const t = TEXT[lang];
+const { Content } = await entry.render();
+const data = entry.data;
+---
+
+<BaseLayout lang={lang} title={`${data.title} | ${t.siteName}`} description={data.summary}>
+  <section class="hero">
+    <h1>{data.title}</h1>
+    <p>{data.summary}</p>
+    {data.tags.length > 0 && (
+      <div class="chip-row">
+        {data.tags.map((tag: string) => <span class="chip">{tag}</span>)}
+      </div>
+    )}
+  </section>
+
+  <div class="two-col">
+    <article class="panel prose">
+      <Content components={mdxComponents} />
+    </article>
+    <aside class="panel">
+      <h3>{t.productInfo}</h3>
+      <ul class="meta-list">
+        {data.version && (
+          <li>
+            <strong>{t.productVersion}:</strong> {data.version}
+          </li>
+        )}
+        {data.unityVersion && (
+          <li>
+            <strong>{t.productUnity}:</strong> {data.unityVersion}
+          </li>
+        )}
+        {data.price && (
+          <li>
+            <strong>{t.productPrice}:</strong> {data.price}
+          </li>
+        )}
+        {data.updatedAt && (
+          <li>
+            <strong>{t.productUpdated}:</strong> {data.updatedAt}
+          </li>
+        )}
+      </ul>
+      <div class="card-actions" style="margin-top: 1rem;">
+        <a class="btn primary" href={data.assetStoreUrl} target="_blank" rel="noreferrer">{t.buyOnAssetStore}</a>
+        {data.docsUrl && (
+          <a class="btn" href={data.docsUrl} target="_blank" rel="noreferrer">
+            {t.docs}
+          </a>
+        )}
+      </div>
+    </aside>
+  </div>
+</BaseLayout>

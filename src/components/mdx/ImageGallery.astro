@@ -1,0 +1,14 @@
+---
+type Props = {
+  images: string[];
+  altPrefix?: string;
+};
+
+const { images = [], altPrefix = "Gallery image" } = Astro.props as Props;
+---
+
+{images.length > 0 && (
+  <div class="media-gallery">
+    {images.map((src, index) => <img src={src} alt={`${altPrefix} ${index + 1}`} loading="lazy" />)}
+  </div>
+)}

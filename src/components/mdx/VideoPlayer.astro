@@ -1,0 +1,15 @@
+---
+type Props = {
+  src: string;
+  poster?: string;
+};
+
+const { src, poster } = Astro.props as Props;
+---
+
+<div class="video-wrap">
+  <video controls preload="metadata" poster={poster}>
+    <source src={src} />
+    Your browser does not support the video element.
+  </video>
+</div>

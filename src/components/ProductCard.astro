@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { TEXT, type Lang } from "../lib/i18n";
+
+type Props = {
+  lang: Lang;
+  product: CollectionEntry<"products">;
+};
+
+const { lang, product } = Astro.props as Props;
+const t = TEXT[lang];
+const { productSlug, title, summary, tags, assetStoreUrl, docsUrl } = product.data;
+---
+
+<article class="card">
+  <h3>{title}</h3>
+  <p>{summary}</p>
+  {tags.length > 0 && (
+    <div class="chip-row">
+      {tags.map((tag) => <span class="chip">{tag}</span>)}
+    </div>
+  )}
+  <div class="card-actions">
+    <a class="btn primary" href={`/${lang}/products/${productSlug}`}>{t.details}</a>
+    <a class="btn" href={assetStoreUrl} target="_blank" rel="noreferrer">{t.buyOnAssetStore}</a>
+    {docsUrl && (
+      <a class="btn" href={docsUrl} target="_blank" rel="noreferrer">
+        {t.docs}
+      </a>
+    )}
+  </div>
+</article>

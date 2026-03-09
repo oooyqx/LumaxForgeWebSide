@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../../../layouts/BaseLayout.astro";
+import { TEXT, type Lang } from "../../../../../lib/i18n";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("manuals");
+  return entries.map((entry) => ({
+    params: {
+      lang: entry.data.lang,
+      slug: entry.data.productSlug,
+      chapter: entry.data.chapterSlug
+    },
+    props: { entry }
+  }));
+}
+
+const { lang, slug } = Astro.params as { lang: Lang; slug: string; chapter: string };
+const { entry } = Astro.props;
+const t = TEXT[lang];
+const chapters = (await getCollection("manuals", ({ data }) => data.lang === lang && data.productSlug === slug)).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const { Content } = await entry.render();
+---
+
+<BaseLayout lang={lang} title={`${entry.data.title} | ${t.manualTitle} | ${t.siteName}`} description={entry.data.title}>
+  <section class="hero">
+    <h1>{entry.data.title}</h1>
+    <p>
+      {slug} · {t.manualTitle}
+    </p>
+    <div class="card-actions">
+      <a class="btn" href={`/${lang}/products/${slug}`}>{t.backToProduct}</a>
+      <a class="btn" href={`/${lang}/products/${slug}/manual`}>{t.chapterList}</a>
+    </div>
+  </section>
+
+  <div class="manual-layout">
+    <aside class="panel chapter-nav">
+      <h3>{t.chapterList}</h3>
+      {chapters.map((chapter) => (
+        <a
+          href={`/${lang}/products/${slug}/manual/${chapter.data.chapterSlug}`}
+          aria-current={chapter.id === entry.id ? "page" : undefined}
+        >
+          {chapter.data.title}
+        </a>
+      ))}
+    </aside>
+
+    <article class="panel prose">
+      <Content />
+    </article>
+  </div>
+</BaseLayout>

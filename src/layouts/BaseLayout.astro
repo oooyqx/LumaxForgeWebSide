@@ -1,0 +1,75 @@
+---
+import "../styles/global.css";
+import { DEFAULT_LANG, LANGS, TEXT, type Lang } from "../lib/i18n";
+
+type Props = {
+  lang: Lang;
+  title: string;
+  description?: string;
+};
+
+const { lang, title, description } = Astro.props as Props;
+const t = TEXT[lang];
+const path = Astro.url.pathname;
+const isPathForLang = (candidateLang: Lang) => {
+  const parts = path.split("/").filter(Boolean);
+  if (parts.length === 0) return `/${candidateLang}`;
+  if (LANGS.includes(parts[0] as Lang)) {
+    parts[0] = candidateLang;
+    return `/${parts.join("/")}`;
+  }
+  return `/${candidateLang}/${parts.join("/")}`;
+};
+const navItems = [
+  { href: `/${lang}`, label: t.navHome },
+  { href: `/${lang}/products`, label: t.navProducts }
+];
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={Astro.url.href} />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container site-header-inner">
+        <a class="brand" href={`/${lang}`}>
+          <span>Lumax</span>Forge
+        </a>
+        <nav class="main-nav">
+          {
+            navItems.map((item) => (
+              <a href={item.href} aria-current={path === item.href ? "page" : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+        <div class="lang-switch">
+          {
+            LANGS.map((l) => (
+              <a href={isPathForLang(l)} aria-current={String(l === lang)}>
+                {l.toUpperCase()}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <slot />
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        © {new Date().getFullYear()} LumaxForgeLLC. Built with Astro, deployed on Cloudflare Pages.
+      </div>
+    </footer>
+  </body>
+</html>
