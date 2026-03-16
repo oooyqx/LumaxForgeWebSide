@@ -319,7 +319,7 @@ function readScreenshotMedia(folderName: string, root: string) {
 export { slugifyAssetName };
 
 export function loadAssetsData(folderName: string, projectRoot = process.cwd()): AssetsData {
-  const root = path.join(projectRoot, "assetsdata", folderName);
+  const root = path.join(projectRoot, "public", "assetsdata", folderName);
   const meta = readJsonIfExists<any>(path.join(root, "metadata.json"));
   const descriptionHtmlSource = readTextIfExists(path.join(root, "description.html"));
   const detailHtml = readTextIfExists(path.join(root, "detail.html"));
@@ -466,7 +466,7 @@ export function loadAssetsData(folderName: string, projectRoot = process.cwd()):
 }
 
 export function listAssetsDataFolders(projectRoot = process.cwd()): AssetsDataFolderEntry[] {
-  const assetsRoot = path.join(projectRoot, "assetsdata");
+  const assetsRoot = path.join(projectRoot, "public", "assetsdata");
   try {
     return fs
       .readdirSync(assetsRoot, { withFileTypes: true })
