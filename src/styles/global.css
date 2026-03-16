@@ -186,6 +186,8 @@ body.docs-theme .brand-wordmark {
 
 main {
   padding: 2.4rem 0 4rem;
+  position: relative;
+  z-index: 1;
 }
 
 body.docs-theme main {
@@ -1207,6 +1209,8 @@ body.docs-theme .btn.primary {
   color: var(--muted);
   font-size: 0.9rem;
   padding: 1.4rem 0 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 960px) {
