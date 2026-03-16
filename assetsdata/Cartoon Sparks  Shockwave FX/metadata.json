@@ -1,0 +1,133 @@
+{
+  "pluginId": "1282094",
+  "pluginName": "Cartoon Sparks & Shockwave FX",
+  "status": "unknown",
+  "backupTime": "2026-03-16T02:43:19.740Z",
+  "pages": {
+    "upload": {
+      "url": "https://publisher.unity.com/packages/1282094/edit/upload",
+      "savedAt": "2026-03-16T02:43:25.803Z"
+    },
+    "description": {
+      "url": "https://publisher.unity.com/packages/1282094/edit/description",
+      "savedAt": "2026-03-16T02:43:31.599Z"
+    },
+    "release-notes": {
+      "url": "https://publisher.unity.com/packages/1282094/edit/release-notes",
+      "savedAt": "2026-03-16T02:43:37.369Z"
+    },
+    "detail": {
+      "url": "https://publisher.unity.com/packages/1282094/edit/detail",
+      "savedAt": "2026-03-16T02:43:43.592Z"
+    },
+    "media": {
+      "url": "https://publisher.unity.com/packages/1282094/edit/media",
+      "savedAt": "2026-03-16T02:43:49.385Z"
+    },
+    "localization": {
+      "url": "https://publisher.unity.com/packages/1282094/edit/localization",
+      "savedAt": "2026-03-16T02:44:12.528Z"
+    }
+  },
+  "images": [
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/600e9f45-92dc-4dae-85b3-89912ef6131a.jpg",
+      "file": "marketing_images/Icon image.jpg",
+      "module": "marketing_images",
+      "name": "Icon image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/07b435e0-d194-45ad-86c9-46ef74ce8a67.jpg",
+      "file": "marketing_images/Card image.jpg",
+      "module": "marketing_images",
+      "name": "Card image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/d60be060-8df8-414c-afc6-d95175076dba.jpg",
+      "file": "marketing_images/Cover image.jpg",
+      "module": "marketing_images",
+      "name": "Cover image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/600e9f45-92dc-4dae-85b3-89912ef6131a.jpg",
+      "file": "marketing_images/Social media image.jpg",
+      "module": "marketing_images",
+      "name": "Social media image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/c81df716-d7c2-40c8-aa7f-0f2cc5b37fda_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-3.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-3"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/31fd9ff2-1da3-4f86-af15-94d095538581_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-4.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-4"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/883a12d7-0176-4c42-8d74-fb8edebad59a_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-5.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-5"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/0179ea46-66e1-4e08-95d6-5c770f8828e0_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-6.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-6"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/487e726b-476e-4c5f-abbf-3648c839b82c_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-7.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-7"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/5ad19274-69e4-418f-94fd-8dfe906dfab5_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-8.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-8"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/63127b39-92cf-40c3-88c8-52695632c976_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-9.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-9"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/e77cd3c5-fc9a-4bf2-839c-689c144b7b89_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-10.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-10"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/db6855d8-b765-4a29-b343-b3092b1025d5_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-11.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-11"
+    }
+  ],
+  "videos": [
+    {
+      "url": "https://youtu.be/LWs_KbMihFI",
+      "type": "embed",
+      "file": "screenshots_videos/screenshot-bg-1.txt",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-1",
+      "mediaKey": "screenshot-bg-1"
+    },
+    {
+      "url": "https://youtu.be/ElcSoBvb2SE",
+      "type": "embed",
+      "file": "screenshots_videos/screenshot-bg-2.txt",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-2",
+      "mediaKey": "screenshot-bg-2"
+    }
+  ],
+  "package": {
+    "note": "请手动下载 unitypackage 文件到此目录"
+  }
+}

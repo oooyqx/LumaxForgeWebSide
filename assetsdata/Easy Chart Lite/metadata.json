@@ -2,54 +2,54 @@
   "pluginId": "1250546",
   "pluginName": "Easy Chart Lite",
   "status": "unknown",
-  "backupTime": "2026-03-14T02:26:47.274Z",
+  "backupTime": "2026-03-16T02:37:32.811Z",
   "pages": {
     "upload": {
       "url": "https://publisher.unity.com/packages/1250546/edit/upload",
-      "savedAt": "2026-03-14T02:26:53.010Z"
+      "savedAt": "2026-03-16T02:37:38.557Z"
     },
     "description": {
       "url": "https://publisher.unity.com/packages/1250546/edit/description",
-      "savedAt": "2026-03-14T02:26:58.751Z"
+      "savedAt": "2026-03-16T02:37:44.299Z"
     },
     "release-notes": {
       "url": "https://publisher.unity.com/packages/1250546/edit/release-notes",
-      "savedAt": "2026-03-14T02:27:04.515Z"
+      "savedAt": "2026-03-16T02:37:50.008Z"
     },
     "detail": {
       "url": "https://publisher.unity.com/packages/1250546/edit/detail",
-      "savedAt": "2026-03-14T02:27:10.294Z"
+      "savedAt": "2026-03-16T02:37:55.730Z"
     },
     "media": {
       "url": "https://publisher.unity.com/packages/1250546/edit/media",
-      "savedAt": "2026-03-14T02:27:16.049Z"
+      "savedAt": "2026-03-16T02:38:01.441Z"
     },
     "localization": {
       "url": "https://publisher.unity.com/packages/1250546/edit/localization",
-      "savedAt": "2026-03-14T02:27:28.946Z"
+      "savedAt": "2026-03-16T02:38:23.631Z"
     }
   },
   "images": [
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/3232dc6a-da08-4c1c-9854-a67555b442c6.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/3232dc6a-da08-4c1c-9854-a67555b442c6.jpg",
       "file": "marketing_images/Icon image.jpg",
       "module": "marketing_images",
       "name": "Icon image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/f2996200-05a7-405b-8563-c895778ca193.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/f2996200-05a7-405b-8563-c895778ca193.jpg",
       "file": "marketing_images/Card image.jpg",
       "module": "marketing_images",
       "name": "Card image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/68ec5c89-f674-4acb-83b2-d6a6ce2b6ed6.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/68ec5c89-f674-4acb-83b2-d6a6ce2b6ed6.jpg",
       "file": "marketing_images/Cover image.jpg",
       "module": "marketing_images",
       "name": "Cover image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/3232dc6a-da08-4c1c-9854-a67555b442c6.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/3232dc6a-da08-4c1c-9854-a67555b442c6.jpg",
       "file": "marketing_images/Social media image.jpg",
       "module": "marketing_images",
       "name": "Social media image"
@@ -61,19 +61,19 @@
       "name": "screenshot-bg-1"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/c34e7ef5-1b1a-4f25-bd68-5ac684a1024e_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/c34e7ef5-1b1a-4f25-bd68-5ac684a1024e_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-2.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-2"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/10547bb3-ec62-403c-9619-4b32aa89c0d9_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/10547bb3-ec62-403c-9619-4b32aa89c0d9_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-3.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-3"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/4f90054b-85cd-4faf-aa0f-39c1adf21299_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/4f90054b-85cd-4faf-aa0f-39c1adf21299_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-4.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-4"

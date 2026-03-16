@@ -2,108 +2,96 @@
   "pluginId": "1282092",
   "pluginName": "Cartoon Smoke FX",
   "status": "unknown",
-  "backupTime": "2026-03-14T02:30:09.908Z",
+  "backupTime": "2026-03-16T02:42:15.202Z",
   "pages": {
     "upload": {
       "url": "https://publisher.unity.com/packages/1282092/edit/upload",
-      "savedAt": "2026-03-14T02:30:15.703Z"
+      "savedAt": "2026-03-16T02:42:21.366Z"
     },
     "description": {
       "url": "https://publisher.unity.com/packages/1282092/edit/description",
-      "savedAt": "2026-03-14T02:30:21.873Z"
+      "savedAt": "2026-03-16T02:42:27.236Z"
     },
     "release-notes": {
       "url": "https://publisher.unity.com/packages/1282092/edit/release-notes",
-      "savedAt": "2026-03-14T02:30:27.642Z"
+      "savedAt": "2026-03-16T02:42:34.894Z"
     },
     "detail": {
       "url": "https://publisher.unity.com/packages/1282092/edit/detail",
-      "savedAt": "2026-03-14T02:30:33.375Z"
+      "savedAt": "2026-03-16T02:42:40.651Z"
     },
     "media": {
       "url": "https://publisher.unity.com/packages/1282092/edit/media",
-      "savedAt": "2026-03-14T02:30:39.160Z"
+      "savedAt": "2026-03-16T02:42:47.254Z"
     },
     "localization": {
       "url": "https://publisher.unity.com/packages/1282092/edit/localization",
-      "savedAt": "2026-03-14T02:30:52.503Z"
+      "savedAt": "2026-03-16T02:43:12.708Z"
     }
   },
   "images": [
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/4979ce71-ecac-4a46-8c28-6f0504377858.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/4979ce71-ecac-4a46-8c28-6f0504377858.jpg",
       "file": "marketing_images/Icon image.jpg",
       "module": "marketing_images",
       "name": "Icon image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/8fce87ec-8e82-4535-8633-a6de0f207829.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/8fce87ec-8e82-4535-8633-a6de0f207829.jpg",
       "file": "marketing_images/Card image.jpg",
       "module": "marketing_images",
       "name": "Card image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/bf5cc345-1da0-4ad8-8768-6a0f98e1e0c4.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/bf5cc345-1da0-4ad8-8768-6a0f98e1e0c4.jpg",
       "file": "marketing_images/Cover image.jpg",
       "module": "marketing_images",
       "name": "Cover image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/4979ce71-ecac-4a46-8c28-6f0504377858.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/4979ce71-ecac-4a46-8c28-6f0504377858.jpg",
       "file": "marketing_images/Social media image.jpg",
       "module": "marketing_images",
       "name": "Social media image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/6ab3e96f-a265-48eb-bb3a-8522d9189359_thumb.png",
-      "file": "screenshots_videos/screenshot-bg-1.png",
-      "module": "screenshots_videos",
-      "name": "screenshot-bg-1"
-    },
-    {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/436d1e58-c68e-4f15-b9d5-6e7dfa7a092d_thumb.png",
-      "file": "screenshots_videos/screenshot-bg-2.png",
-      "module": "screenshots_videos",
-      "name": "screenshot-bg-2"
-    },
-    {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/c4cf9174-2ed1-4018-8bf2-8124584b962d_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/c4cf9174-2ed1-4018-8bf2-8124584b962d_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-3.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-3"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/29c67da9-02c5-4bb0-8271-ada836e4bd99_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/29c67da9-02c5-4bb0-8271-ada836e4bd99_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-4.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-4"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/8578d657-5784-48a7-90be-43453daf325d_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/8578d657-5784-48a7-90be-43453daf325d_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-5.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-5"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/a973e177-5720-4a11-a114-4ab8c1f55f2c_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/a973e177-5720-4a11-a114-4ab8c1f55f2c_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-6.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-6"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/e5de0671-487b-4c8e-884b-e30db093a54c_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/e5de0671-487b-4c8e-884b-e30db093a54c_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-7.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-7"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/1acd90c4-377f-4101-b3b4-af09960b0689_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/1acd90c4-377f-4101-b3b4-af09960b0689_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-8.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-8"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/b5c8f130-c574-4120-8c43-35faae1276a5_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/b5c8f130-c574-4120-8c43-35faae1276a5_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-9.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-9"

@@ -1,0 +1,83 @@
+{
+  "pluginId": "1282184",
+  "pluginName": "Sci-Fi UI Arrow Collection",
+  "status": "unknown",
+  "backupTime": "2026-03-16T03:16:53.379Z",
+  "pages": {
+    "upload": {
+      "url": "https://publisher.unity.com/packages/1282184/edit/upload",
+      "savedAt": "2026-03-16T03:16:59.154Z"
+    },
+    "description": {
+      "url": "https://publisher.unity.com/packages/1282184/edit/description",
+      "savedAt": "2026-03-16T03:17:04.862Z"
+    },
+    "release-notes": {
+      "url": "https://publisher.unity.com/packages/1282184/edit/release-notes",
+      "savedAt": "2026-03-16T03:17:10.568Z"
+    },
+    "detail": {
+      "url": "https://publisher.unity.com/packages/1282184/edit/detail",
+      "savedAt": "2026-03-16T03:17:16.341Z"
+    },
+    "media": {
+      "url": "https://publisher.unity.com/packages/1282184/edit/media",
+      "savedAt": "2026-03-16T03:17:22.053Z"
+    },
+    "localization": {
+      "url": "https://publisher.unity.com/packages/1282184/edit/localization",
+      "savedAt": "2026-03-16T03:17:35.745Z"
+    }
+  },
+  "images": [
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/a342e61a-6712-4109-809c-a5e8bc5088f1.jpg",
+      "file": "marketing_images/Icon image.jpg",
+      "module": "marketing_images",
+      "name": "Icon image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/ab3702b8-48c2-4cb1-a550-bd5ad49cb622.jpg",
+      "file": "marketing_images/Card image.jpg",
+      "module": "marketing_images",
+      "name": "Card image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/2846929e-f3bf-47ce-ab4e-24cca2046e90.jpg",
+      "file": "marketing_images/Cover image.jpg",
+      "module": "marketing_images",
+      "name": "Cover image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/a342e61a-6712-4109-809c-a5e8bc5088f1.jpg",
+      "file": "marketing_images/Social media image.jpg",
+      "module": "marketing_images",
+      "name": "Social media image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/18a025be-6c07-4432-af88-b3f0a23c25ce_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-2.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-2"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/974af388-3798-4332-bdc6-8bb243dbaa83_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-3.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-3"
+    }
+  ],
+  "videos": [
+    {
+      "url": "https://youtu.be/ZhZnUY-7D3I",
+      "type": "embed",
+      "file": "screenshots_videos/screenshot-bg-1.txt",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-1",
+      "mediaKey": "screenshot-bg-1"
+    }
+  ],
+  "package": {
+    "note": "请手动下载 unitypackage 文件到此目录"
+  }
+}

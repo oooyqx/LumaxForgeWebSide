@@ -2,81 +2,75 @@
   "pluginId": "1282176",
   "pluginName": "Sci-Fi Lampstand",
   "status": "unknown",
-  "backupTime": "2026-03-14T02:51:56.640Z",
+  "backupTime": "2026-03-16T03:12:50.362Z",
   "pages": {
     "upload": {
       "url": "https://publisher.unity.com/packages/1282176/edit/upload",
-      "savedAt": "2026-03-14T02:52:02.407Z"
+      "savedAt": "2026-03-16T03:12:56.228Z"
     },
     "description": {
       "url": "https://publisher.unity.com/packages/1282176/edit/description",
-      "savedAt": "2026-03-14T02:52:08.174Z"
+      "savedAt": "2026-03-16T03:13:01.936Z"
     },
     "release-notes": {
       "url": "https://publisher.unity.com/packages/1282176/edit/release-notes",
-      "savedAt": "2026-03-14T02:52:13.938Z"
+      "savedAt": "2026-03-16T03:13:07.695Z"
     },
     "detail": {
       "url": "https://publisher.unity.com/packages/1282176/edit/detail",
-      "savedAt": "2026-03-14T02:52:19.776Z"
+      "savedAt": "2026-03-16T03:13:13.441Z"
     },
     "media": {
       "url": "https://publisher.unity.com/packages/1282176/edit/media",
-      "savedAt": "2026-03-14T02:52:25.519Z"
+      "savedAt": "2026-03-16T03:13:19.196Z"
     },
     "localization": {
       "url": "https://publisher.unity.com/packages/1282176/edit/localization",
-      "savedAt": "2026-03-14T02:52:35.008Z"
+      "savedAt": "2026-03-16T03:13:33.020Z"
     }
   },
   "images": [
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/cb71f8d0-50f0-41ae-b6f5-e1ebddd64375.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/cb71f8d0-50f0-41ae-b6f5-e1ebddd64375.jpg",
       "file": "marketing_images/Icon image.jpg",
       "module": "marketing_images",
       "name": "Icon image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/d3762b54-9dcd-4e0b-9871-276c18da114d.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/d3762b54-9dcd-4e0b-9871-276c18da114d.jpg",
       "file": "marketing_images/Card image.jpg",
       "module": "marketing_images",
       "name": "Card image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/4d669db6-5d4b-4fe8-9b37-d45126905207.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/4d669db6-5d4b-4fe8-9b37-d45126905207.jpg",
       "file": "marketing_images/Cover image.jpg",
       "module": "marketing_images",
       "name": "Cover image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/cb71f8d0-50f0-41ae-b6f5-e1ebddd64375.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/cb71f8d0-50f0-41ae-b6f5-e1ebddd64375.jpg",
       "file": "marketing_images/Social media image.jpg",
       "module": "marketing_images",
       "name": "Social media image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/bf78f702-3f75-4a91-8168-5764617f3196_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/bf78f702-3f75-4a91-8168-5764617f3196_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-1.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-1"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/7a3751e9-71bf-45be-a9f8-9d9f123079de_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/7a3751e9-71bf-45be-a9f8-9d9f123079de_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-2.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-2"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/c0329114-3a30-4143-a2fc-f05f4c8929ba_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/c0329114-3a30-4143-a2fc-f05f4c8929ba_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-3.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-3"
-    },
-    {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/dd9e93f5-a416-4bbe-b99f-2e261e02fc82_thumb.png",
-      "file": "screenshots_videos/screenshot-bg-4.png",
-      "module": "screenshots_videos",
-      "name": "screenshot-bg-4"
     }
   ],
   "videos": [

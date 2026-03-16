@@ -1,0 +1,121 @@
+{
+  "pluginId": "1282236",
+  "pluginName": "UI & Mesh Frame FX （easier to create）",
+  "status": "unknown",
+  "backupTime": "2026-03-16T03:43:43.352Z",
+  "pages": {
+    "upload": {
+      "url": "https://publisher.unity.com/packages/1282236/edit/upload",
+      "savedAt": "2026-03-16T03:43:49.253Z"
+    },
+    "description": {
+      "url": "https://publisher.unity.com/packages/1282236/edit/description",
+      "savedAt": "2026-03-16T03:43:55.023Z"
+    },
+    "release-notes": {
+      "url": "https://publisher.unity.com/packages/1282236/edit/release-notes",
+      "savedAt": "2026-03-16T03:44:00.824Z"
+    },
+    "detail": {
+      "url": "https://publisher.unity.com/packages/1282236/edit/detail",
+      "savedAt": "2026-03-16T03:44:06.547Z"
+    },
+    "media": {
+      "url": "https://publisher.unity.com/packages/1282236/edit/media",
+      "savedAt": "2026-03-16T03:44:12.290Z"
+    },
+    "localization": {
+      "url": "https://publisher.unity.com/packages/1282236/edit/localization",
+      "savedAt": "2026-03-16T03:44:32.854Z"
+    }
+  },
+  "images": [
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/4b455bb6-7658-448d-947a-06e2bdd04247.jpg",
+      "file": "marketing_images/Icon image.jpg",
+      "module": "marketing_images",
+      "name": "Icon image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/51be9b97-38bb-4250-a3c4-688f52f774f1.jpg",
+      "file": "marketing_images/Card image.jpg",
+      "module": "marketing_images",
+      "name": "Card image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/d143678a-9965-4d0c-a51f-258f52d68b25.jpg",
+      "file": "marketing_images/Cover image.jpg",
+      "module": "marketing_images",
+      "name": "Cover image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/4b455bb6-7658-448d-947a-06e2bdd04247.jpg",
+      "file": "marketing_images/Social media image.jpg",
+      "module": "marketing_images",
+      "name": "Social media image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/58e118af-87c4-4658-9aeb-354c6cedacb2_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-3.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-3"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/29ed90ad-b410-4b30-bf55-8cba714f48a3_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-4.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-4"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/7e7af56d-ff94-40d8-94ab-f2147993dc84_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-5.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-5"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/55cace6b-4588-4f7b-b935-38a3c9caab1f_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-6.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-6"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/40ac1647-10e1-4fb2-a6fe-930556ad9722_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-7.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-7"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/1e3a3694-c74b-4dcf-9b85-a603892e96b8_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-8.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-8"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/ef3ce4f3-5bd4-409d-b702-99223c385869_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-9.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-9"
+    }
+  ],
+  "videos": [
+    {
+      "url": "https://youtu.be/UfNvaDT4EbA",
+      "type": "embed",
+      "file": "screenshots_videos/screenshot-bg-1.txt",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-1",
+      "mediaKey": "screenshot-bg-1"
+    },
+    {
+      "url": "https://youtu.be/r7MPY8DqSU0",
+      "type": "embed",
+      "file": "screenshots_videos/screenshot-bg-2.txt",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-2",
+      "mediaKey": "screenshot-bg-2"
+    }
+  ],
+  "package": {
+    "note": "请手动下载 unitypackage 文件到此目录"
+  }
+}

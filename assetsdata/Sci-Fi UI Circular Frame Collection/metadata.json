@@ -1,0 +1,200 @@
+{
+  "pluginId": "1282188",
+  "pluginName": "Sci-Fi UI Circular Frame Collection",
+  "status": "unknown",
+  "backupTime": "2026-03-16T03:18:37.354Z",
+  "pages": {
+    "upload": {
+      "url": "https://publisher.unity.com/packages/1282188/edit/upload",
+      "savedAt": "2026-03-16T03:18:43.195Z"
+    },
+    "description": {
+      "url": "https://publisher.unity.com/packages/1282188/edit/description",
+      "savedAt": "2026-03-16T03:18:49.080Z"
+    },
+    "release-notes": {
+      "url": "https://publisher.unity.com/packages/1282188/edit/release-notes",
+      "savedAt": "2026-03-16T03:18:54.944Z"
+    },
+    "detail": {
+      "url": "https://publisher.unity.com/packages/1282188/edit/detail",
+      "savedAt": "2026-03-16T03:19:00.763Z"
+    },
+    "media": {
+      "url": "https://publisher.unity.com/packages/1282188/edit/media",
+      "savedAt": "2026-03-16T03:19:07.440Z"
+    },
+    "localization": {
+      "url": "https://publisher.unity.com/packages/1282188/edit/localization",
+      "savedAt": "2026-03-16T03:19:44.304Z"
+    }
+  },
+  "images": [
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/a5ab1ec9-23cd-408a-8c30-8c8af0bd3d2b.jpg",
+      "file": "marketing_images/Icon image.jpg",
+      "module": "marketing_images",
+      "name": "Icon image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/0f8b6a10-ded0-4c91-ab17-83e3d8572a83.jpg",
+      "file": "marketing_images/Card image.jpg",
+      "module": "marketing_images",
+      "name": "Card image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/5e226474-af41-4927-925a-54480d466ddb.jpg",
+      "file": "marketing_images/Cover image.jpg",
+      "module": "marketing_images",
+      "name": "Cover image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/a5ab1ec9-23cd-408a-8c30-8c8af0bd3d2b.jpg",
+      "file": "marketing_images/Social media image.jpg",
+      "module": "marketing_images",
+      "name": "Social media image"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/faacff03-37ac-44e9-bca9-5aa358e69f7b_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-1.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-1"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/0ada12ae-c08a-452c-9916-6a8296e31c28_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-2.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-2"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/a9611090-e13f-40ca-bae6-8555835970c2_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-3.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-3"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/6c84ad39-347d-4fd9-9cb8-c8115240e31e_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-4.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-4"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/811e7eb1-2c9d-458f-a2bd-b071d4b9e1b5_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-5.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-5"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/6ee29c3a-950b-4973-8c83-44989e93c08b_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-6.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-6"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/90468436-dfeb-49fc-8923-9ac0a5df2668_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-7.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-7"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/623b13e0-336c-4486-9f46-9020c17cc9d7_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-8.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-8"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/e8154c48-1b83-48c8-b40d-1f71f1238fc3_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-9.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-9"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/59a7d8b5-085a-4cb9-8529-339b11e2681d_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-10.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-10"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/803e8f6c-b705-4ebb-aa3f-8d98f2c4dddf_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-11.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-11"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/c7384473-ac5c-42ac-a0b9-84c74336af87_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-12.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-12"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/df63ad59-926c-452a-9b49-27cb78f7f6e6_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-13.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-13"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/5b447e5c-6330-4355-a9a6-d089efa47150_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-14.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-14"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/b506e6e8-c975-4b24-bc32-00b6e243f265_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-15.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-15"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/0a37f0c0-7e61-4a74-b54f-be77651a5e51_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-16.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-16"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/bfb4757e-472c-49b7-bf57-8e009bab285e_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-17.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-17"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/cac7445e-6503-43bd-8d5b-0a2b867db4e9_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-18.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-18"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/66fff3bd-17fc-441c-89b8-022d0267dbc7_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-19.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-19"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/2d3a2c57-ff9a-40ad-a2a4-9da4a1051ced_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-20.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-20"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/bf427188-75a0-45a7-8984-c9ed33a83d9a_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-21.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-21"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/a58f299c-d42b-45ad-941f-b6d38af1c124_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-22.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-22"
+    },
+    {
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/fe5fab61-119d-42df-864e-69150cf2e6e1_scaled.jpg",
+      "file": "screenshots_videos/screenshot-bg-23.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-23"
+    }
+  ],
+  "videos": [],
+  "package": {
+    "note": "请手动下载 unitypackage 文件到此目录"
+  }
+}

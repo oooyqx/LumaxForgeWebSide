@@ -2,108 +2,102 @@
   "pluginId": "1282172",
   "pluginName": "Sci-Fi Hologram Brain",
   "status": "unknown",
-  "backupTime": "2026-03-14T02:50:24.035Z",
+  "backupTime": "2026-03-16T03:11:05.004Z",
   "pages": {
     "upload": {
       "url": "https://publisher.unity.com/packages/1282172/edit/upload",
-      "savedAt": "2026-03-14T02:50:29.882Z"
+      "savedAt": "2026-03-16T03:11:10.723Z"
     },
     "description": {
       "url": "https://publisher.unity.com/packages/1282172/edit/description",
-      "savedAt": "2026-03-14T02:50:35.599Z"
+      "savedAt": "2026-03-16T03:11:16.446Z"
     },
     "release-notes": {
       "url": "https://publisher.unity.com/packages/1282172/edit/release-notes",
-      "savedAt": "2026-03-14T02:50:41.303Z"
+      "savedAt": "2026-03-16T03:11:22.178Z"
     },
     "detail": {
       "url": "https://publisher.unity.com/packages/1282172/edit/detail",
-      "savedAt": "2026-03-14T02:50:48.234Z"
+      "savedAt": "2026-03-16T03:11:27.906Z"
     },
     "media": {
       "url": "https://publisher.unity.com/packages/1282172/edit/media",
-      "savedAt": "2026-03-14T02:50:53.985Z"
+      "savedAt": "2026-03-16T03:11:33.661Z"
     },
     "localization": {
       "url": "https://publisher.unity.com/packages/1282172/edit/localization",
-      "savedAt": "2026-03-14T02:51:05.067Z"
+      "savedAt": "2026-03-16T03:11:53.992Z"
     }
   },
   "images": [
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/5d2e6489-52c6-4349-a9be-0d15979cd19d.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/5d2e6489-52c6-4349-a9be-0d15979cd19d.jpg",
       "file": "marketing_images/Icon image.jpg",
       "module": "marketing_images",
       "name": "Icon image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/ef4150b7-7da2-4120-9390-39cc7184a57c.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/ef4150b7-7da2-4120-9390-39cc7184a57c.jpg",
       "file": "marketing_images/Card image.jpg",
       "module": "marketing_images",
       "name": "Card image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/21a8b652-89cf-428d-be36-3eb605350b8e.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/21a8b652-89cf-428d-be36-3eb605350b8e.jpg",
       "file": "marketing_images/Cover image.jpg",
       "module": "marketing_images",
       "name": "Cover image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/5d2e6489-52c6-4349-a9be-0d15979cd19d.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/5d2e6489-52c6-4349-a9be-0d15979cd19d.jpg",
       "file": "marketing_images/Social media image.jpg",
       "module": "marketing_images",
       "name": "Social media image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/37f05255-3bc5-4092-9ac4-7777f0cad9b3_thumb.png",
-      "file": "screenshots_videos/screenshot-bg-1.png",
-      "module": "screenshots_videos",
-      "name": "screenshot-bg-1"
-    },
-    {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/bc15f5ba-543a-4c9e-a754-11ca99b99b8d_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/bc15f5ba-543a-4c9e-a754-11ca99b99b8d_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-2.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-2"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/7f5092fa-9019-4c19-a04c-f20c8fe55e13_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/7f5092fa-9019-4c19-a04c-f20c8fe55e13_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-3.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-3"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/e2ba7963-184f-4302-8883-cbfd8440230c_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/e2ba7963-184f-4302-8883-cbfd8440230c_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-4.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-4"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/cd6f9e3a-eaf8-4512-a443-b36630b6e1e4_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/cd6f9e3a-eaf8-4512-a443-b36630b6e1e4_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-5.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-5"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/93536a8f-1123-4593-8d51-1b2740361865_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/93536a8f-1123-4593-8d51-1b2740361865_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-6.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-6"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/7a814e0e-4da4-432b-8ecf-01d0814a92e0_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/7a814e0e-4da4-432b-8ecf-01d0814a92e0_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-7.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-7"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/e867d6f8-8b7f-4d8b-9e12-d2f64ea01938_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/e867d6f8-8b7f-4d8b-9e12-d2f64ea01938_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-8.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-8"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/866ed44b-02ed-4988-b57e-bf5be10d44c2_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/866ed44b-02ed-4988-b57e-bf5be10d44c2_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-9.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-9"

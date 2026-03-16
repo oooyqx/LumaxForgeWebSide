@@ -2,84 +2,78 @@
   "pluginId": "1282118",
   "pluginName": "Lightning Basic FX",
   "status": "unknown",
-  "backupTime": "2026-03-14T02:40:12.546Z",
+  "backupTime": "2026-03-16T02:57:13.860Z",
   "pages": {
     "upload": {
       "url": "https://publisher.unity.com/packages/1282118/edit/upload",
-      "savedAt": "2026-03-14T02:40:18.263Z"
+      "savedAt": "2026-03-16T02:57:19.665Z"
     },
     "description": {
       "url": "https://publisher.unity.com/packages/1282118/edit/description",
-      "savedAt": "2026-03-14T02:40:24.008Z"
+      "savedAt": "2026-03-16T02:57:25.384Z"
     },
     "release-notes": {
       "url": "https://publisher.unity.com/packages/1282118/edit/release-notes",
-      "savedAt": "2026-03-14T02:40:29.747Z"
+      "savedAt": "2026-03-16T02:57:31.154Z"
     },
     "detail": {
       "url": "https://publisher.unity.com/packages/1282118/edit/detail",
-      "savedAt": "2026-03-14T02:40:35.489Z"
+      "savedAt": "2026-03-16T02:57:36.917Z"
     },
     "media": {
       "url": "https://publisher.unity.com/packages/1282118/edit/media",
-      "savedAt": "2026-03-14T02:40:41.208Z"
+      "savedAt": "2026-03-16T02:57:42.674Z"
     },
     "localization": {
       "url": "https://publisher.unity.com/packages/1282118/edit/localization",
-      "savedAt": "2026-03-14T02:40:50.826Z"
+      "savedAt": "2026-03-16T02:57:56.738Z"
     }
   },
   "images": [
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/3bf1cc4d-9738-4983-8c00-3e7674478a10.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/3bf1cc4d-9738-4983-8c00-3e7674478a10.jpg",
       "file": "marketing_images/Icon image.jpg",
       "module": "marketing_images",
       "name": "Icon image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/f937af87-4eeb-48fd-b1a9-434a7bd116b8.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/f937af87-4eeb-48fd-b1a9-434a7bd116b8.jpg",
       "file": "marketing_images/Card image.jpg",
       "module": "marketing_images",
       "name": "Card image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/4aa1184c-c2c2-4682-b81f-58c6702802e7.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/4aa1184c-c2c2-4682-b81f-58c6702802e7.jpg",
       "file": "marketing_images/Cover image.jpg",
       "module": "marketing_images",
       "name": "Cover image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/3bf1cc4d-9738-4983-8c00-3e7674478a10.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/key-image/3bf1cc4d-9738-4983-8c00-3e7674478a10.jpg",
       "file": "marketing_images/Social media image.jpg",
       "module": "marketing_images",
       "name": "Social media image"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/20732fb6-28c5-4b48-ae17-5bdf2b00b52a_thumb.png",
-      "file": "screenshots_videos/screenshot-bg-1.png",
-      "module": "screenshots_videos",
-      "name": "screenshot-bg-1"
-    },
-    {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/31cc6364-a25c-407d-bbca-7efd1fc67960_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/31cc6364-a25c-407d-bbca-7efd1fc67960_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-2.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-2"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/d5e660c6-6b04-4aac-8155-804981c1efb6_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/d5e660c6-6b04-4aac-8155-804981c1efb6_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-3.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-3"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/dad55b51-1098-40bf-acc9-ed9f985d08df_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/dad55b51-1098-40bf-acc9-ed9f985d08df_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-4.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-4"
     },
     {
-      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/3b9e74dd-1f25-416c-bdc2-46e6b1713413_thumb.jpg",
+      "url": "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/3b9e74dd-1f25-416c-bdc2-46e6b1713413_scaled.jpg",
       "file": "screenshots_videos/screenshot-bg-5.jpg",
       "module": "screenshots_videos",
       "name": "screenshot-bg-5"
