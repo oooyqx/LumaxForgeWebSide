@@ -1,14 +1,15 @@
 ---
 import "../styles/global.css";
-import { DEFAULT_LANG, LANGS, TEXT, type Lang } from "../lib/i18n";
+import { LANGS, TEXT, type Lang } from "../lib/i18n";
 
 type Props = {
   lang: Lang;
   title: string;
   description?: string;
+  bodyClass?: string;
 };
 
-const { lang, title, description } = Astro.props as Props;
+const { lang, title, description, bodyClass } = Astro.props as Props;
 const t = TEXT[lang];
 const path = Astro.url.pathname;
 const isPathForLang = (candidateLang: Lang) => {
@@ -22,7 +23,8 @@ const isPathForLang = (candidateLang: Lang) => {
 };
 const navItems = [
   { href: `/${lang}`, label: t.navHome },
-  { href: `/${lang}/products`, label: t.navProducts }
+  { href: `/${lang}/asset-store`, label: t.navAssetStore },
+  { href: `/${lang}/docs`, label: t.navDocs }
 ];
 ---
 
@@ -35,11 +37,18 @@ const navItems = [
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={Astro.url.href} />
   </head>
-  <body>
+  <body class={bodyClass}>
     <header class="site-header">
       <div class="container site-header-inner">
-        <a class="brand" href={`/${lang}`}>
-          <span>Lumax</span>Forge
+        <a class="brand" href={`/${lang}`} aria-label="LumaxForge Home">
+          <img class="brand-logo" src="/brand/lumaxforge-logo.png" width="36" height="36" alt="LumaxForge logo" />
+          <img
+            class="brand-wordmark"
+            src="/brand/lumaxforge-wordmark.png"
+            width="168"
+            height="28"
+            alt="LumaxForge"
+          />
         </a>
         <nav class="main-nav">
           {
@@ -67,9 +76,7 @@ const navItems = [
       </div>
     </main>
     <footer class="site-footer">
-      <div class="container">
-        © {new Date().getFullYear()} LumaxForgeLLC. Built with Astro, deployed on Cloudflare Pages.
-      </div>
+      <div class="container">© {new Date().getFullYear()} LumaxForgeLLC. Built with Astro, deployed on Cloudflare Pages.</div>
     </footer>
   </body>
 </html>

@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Lang } from "../lib/i18n";
+
+type Props = {
+  lang: Lang;
+  products: CollectionEntry<"products">[];
+};
+
+const { lang, products } = Astro.props as Props;
+
+const items = products
+  .map((p) => {
+    const image = p.data.cover || p.data.gallery?.[0] || "";
+    return { slug: p.data.productSlug, title: p.data.title, image };
+  })
+  .filter((x) => Boolean(x.image));
+
+const loopItems = items.length > 1 ? [...items, ...items] : items;
+---
+
+{items.length > 0 && (
+  <section class="product-carousel" aria-label="Featured products">
+    <div class="product-carousel-head">
+      <h2 class="product-carousel-title">Featured</h2>
+      <p class="product-carousel-subtitle">Click an image to open the product page.</p>
+    </div>
+    <div class={`product-carousel-viewport ${items.length > 1 ? "is-loop" : ""}`}>
+      <div class="product-carousel-track" style={`--itemCount:${items.length};`}>
+        {loopItems.map((it) => (
+          <a class="product-carousel-item" href={`/${lang}/products/${it.slug}`} aria-label={it.title}>
+            <img src={it.image} alt={it.title} loading="lazy" decoding="async" />
+            <span class="product-carousel-caption">{it.title}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+

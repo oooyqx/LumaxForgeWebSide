@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { LANGS, TEXT, type Lang } from "../../../lib/i18n";
+import { listDocsManuals } from "../../../lib/docsdata";
+
+export async function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = TEXT[lang];
+const manuals = listDocsManuals();
+---
+
+<BaseLayout lang={lang} title={`${t.siteName} | ${t.navDocs}`} description={t.navDocs}>
+  <section class="hero">
+    <h1>{t.navDocs}</h1>
+    <p>{lang === "zh" ? "产品使用手册与技术文档" : "Product manuals and technical documentation"}</p>
+  </section>
+
+  <hr class="section-divider" />
+
+  {manuals.length > 0 ? (
+    <div class="products-grid">
+      {manuals.map((manual) => (
+        <a class="asset-card" href={`/${lang}/docs/${manual.slug}`} title={manual.description}>
+          <div class="asset-card-image-wrapper">
+            {manual.cover ? (
+              <img class="asset-card-image" src={manual.cover} alt={manual.title} loading="lazy" decoding="async" />
+            ) : (
+              <div class="asset-card-placeholder"></div>
+            )}
+            <h3 class="asset-card-title">{manual.title}</h3>
+          </div>
+        </a>
+      ))}
+    </div>
+  ) : (
+    <section class="panel">
+      <p>{lang === "zh" ? "暂无文档" : "No documentation available"}</p>
+    </section>
+  )}
+</BaseLayout>

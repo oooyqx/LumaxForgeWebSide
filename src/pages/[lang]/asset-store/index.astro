@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { listAssetsDataFolders } from "../../../lib/assetsdata";
+import { LANGS, TEXT, type Lang } from "../../../lib/i18n";
+
+export async function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = TEXT[lang];
+const products = listAssetsDataFolders();
+---
+
+<BaseLayout lang={lang} title={`${t.siteName} | ${t.navAssetStore}`} description={t.assetStoreSubtitle}>
+  <section class="hero">
+    <h1>{t.assetStoreTitle}</h1>
+    <p>{t.assetStoreSubtitle}</p>
+  </section>
+
+  <hr class="section-divider" />
+
+  {products.length > 0 ? (
+    <div class="products-grid">
+      {products.map((product) => (
+        <a class="asset-card" href={`/${lang}/asset-store/${product.slug}`} title={product.data.descriptionText || product.data.category || product.folderName}>
+          <div class="asset-card-image-wrapper">
+            {product.data.cardImage ? (
+              <img class="asset-card-image" src={product.data.cardImage} alt={product.title} loading="lazy" decoding="async" />
+            ) : (
+              <div class="asset-card-placeholder"></div>
+            )}
+            <h3 class="asset-card-title">{product.title}</h3>
+          </div>
+        </a>
+      ))}
+    </div>
+  ) : (
+    <section class="panel">
+      <p>{t.assetStoreEmpty}</p>
+    </section>
+  )}
+</BaseLayout>

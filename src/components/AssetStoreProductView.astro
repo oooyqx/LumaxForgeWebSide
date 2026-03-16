@@ -1,0 +1,219 @@
+---
+import type { AssetsData } from "../lib/assetsdata";
+
+type Props = {
+  lang: "zh" | "en";
+  title: string;
+  summary?: string;
+  assetStoreUrl?: string;
+  docsUrl?: string;
+  tags?: string[];
+  assetsData: AssetsData;
+};
+
+const { lang, title, summary, assetStoreUrl, docsUrl, tags = [], assetsData } = Astro.props as Props;
+const mediaImages = assetsData.mediaImages ?? [];
+const standaloneVideos = (assetsData.videos ?? []).filter(
+  (video) => video.type === "embed" && !mediaImages.some((image) => image.linkedVideoUrl === video.url)
+);
+const galleryItems = [
+  ...mediaImages.map((image, index) => ({
+    id: `image-${index}`,
+    type: image.linkedVideoUrl ? ("video" as const) : ("image" as const),
+    stageSrc: image.linkedVideoUrl ?? image.url,
+    thumbSrc: image.previewUrl ?? image.url,
+    fullImageSrc: image.url,
+    label: image.fileName || image.kind
+  })),
+  ...standaloneVideos.map((video, index) => ({
+    id: `video-${index}`,
+    type: "video" as const,
+    stageSrc: video.url,
+    thumbSrc: "",
+    fullImageSrc: "",
+    label: video.file || `video-${index + 1}`
+  }))
+];
+const initialMedia = galleryItems[0];
+const hasRichContent = Boolean(assetsData.descriptionHtml || assetsData.technicalDetailsHtml);
+---
+
+<section class="assetstore-hero">
+  <div class="assetstore-breadcrumbs">
+    <a href={`/${lang}`}>Home</a>
+    <span>/</span>
+    <a href={assetsData.pluginName ? `/${lang}/asset-store` : `/${lang}/products`}>Products</a>
+    <span>/</span>
+    <span aria-current="page">{title}</span>
+  </div>
+
+  <div class="assetstore-top">
+    <div class="assetstore-media">
+      <div class="assetstore-media-stage">
+        {initialMedia ? (
+          <>
+            <img
+              class:list={["assetstore-stage-image", initialMedia.type !== "image" && "is-hidden"]}
+              src={initialMedia.type === "image" ? initialMedia.stageSrc : undefined}
+              alt={title}
+              loading="eager"
+              decoding="async"
+            />
+            <iframe
+              class:list={["assetstore-stage-video", initialMedia.type !== "video" && "is-hidden"]}
+              title={`${title} video`}
+              src={initialMedia.type === "video" ? initialMedia.stageSrc : undefined}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            />
+          </>
+        ) : (
+          <div class="assetstore-media-empty">
+            <strong>No media yet</strong>
+            <span>Add media under `assetsdata/{assetsData.pluginName ?? "Product"}` to show screenshots and videos.</span>
+          </div>
+        )}
+      </div>
+
+      {galleryItems.length > 1 && (
+        <div class="assetstore-thumbs assetstore-thumbs-scroll" aria-label="Screenshots and videos">
+          {galleryItems.map((item, index) => (
+            <button
+              type="button"
+              class:list={["assetstore-thumb", "assetstore-thumb-button", index === 0 && "is-active"]}
+              data-media-thumb
+              data-media-type={item.type}
+              data-media-src={item.stageSrc}
+              aria-label={item.type === "video" ? `Play ${item.label}` : `View ${item.label}`}
+            >
+              {item.thumbSrc ? (
+                <img src={item.thumbSrc} alt="" loading="lazy" decoding="async" />
+              ) : (
+                <span class="assetstore-thumb-video">
+                  <span class="assetstore-thumb-video-badge">YouTube</span>
+                </span>
+              )}
+              {item.type === "video" && item.thumbSrc && <span class="assetstore-thumb-play">Play</span>}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <aside class="assetstore-buycard" aria-label="Purchase card">
+      <div class="assetstore-buycard-head">
+        <div class="assetstore-title">{title}</div>
+        {summary && <div class="assetstore-summary">{summary}</div>}
+      </div>
+
+      <div class="assetstore-buycard-actions">
+        {assetStoreUrl && (
+          <a class="btn primary" href={assetStoreUrl} target="_blank" rel="noreferrer">
+            View on Asset Store
+          </a>
+        )}
+        {docsUrl && <a class="btn" href={docsUrl}>Docs</a>}
+      </div>
+
+      {tags.length > 0 && (
+        <div class="chip-row" style="margin-top:0.7rem;">
+          {tags.map((tag) => <span class="chip">{tag}</span>)}
+        </div>
+      )}
+
+      <div class="assetstore-spec">
+        <div class="assetstore-spec-row">
+          <span class="k">Category</span>
+          <span class="v">{assetsData.category ?? "—"}</span>
+        </div>
+        <div class="assetstore-spec-row">
+          <span class="k">Unity</span>
+          <span class="v">{assetsData.unityVersion ?? "—"}</span>
+        </div>
+        <div class="assetstore-spec-row">
+          <span class="k">Uploaded</span>
+          <span class="v">{assetsData.uploadedAtUtc ?? "—"}</span>
+        </div>
+        <div class="assetstore-spec-row">
+          <span class="k">File size</span>
+          <span class="v">{assetsData.fileSize ?? "—"}</span>
+        </div>
+        <div class="assetstore-spec-row">
+          <span class="k">Files</span>
+          <span class="v">{assetsData.fileCount ?? "—"}</span>
+        </div>
+        <div class="assetstore-spec-row">
+          <span class="k">SRP</span>
+          <span class="v">{assetsData.renderPipelines?.join(", ") ?? "—"}</span>
+        </div>
+        {assetsData.pluginId && (
+          <div class="assetstore-spec-row">
+            <span class="k">Plugin ID</span>
+            <span class="v">{assetsData.pluginId}</span>
+          </div>
+        )}
+      </div>
+    </aside>
+  </div>
+
+  {hasRichContent && (
+    <div class="assetstore-rich-layout">
+      {assetsData.descriptionHtml && (
+        <section class="panel assetstore-section">
+          <div class="assetstore-section-head">
+            <h2>{lang === "zh" ? "产品描述" : "Description"}</h2>
+            <span>{lang === "zh" ? "来自 assetsdata/description.html" : "Parsed from assetsdata/description.html"}</span>
+          </div>
+          <div class="assetstore-rich-content" set:html={assetsData.descriptionHtml} />
+        </section>
+      )}
+
+      {assetsData.technicalDetailsHtml && (
+        <section class="panel assetstore-section">
+          <div class="assetstore-section-head">
+            <h2>{lang === "zh" ? "技术细节" : "Technical Details"}</h2>
+            <span>{lang === "zh" ? "来自抓取的编辑页数据" : "Parsed from the captured editor page"}</span>
+          </div>
+          <div class="assetstore-rich-content" set:html={assetsData.technicalDetailsHtml} />
+        </section>
+      )}
+    </div>
+  )}
+</section>
+
+{galleryItems.length > 1 && (
+  <script is:inline>
+    document.querySelectorAll("[data-media-thumb]").forEach((thumb) => {
+      thumb.addEventListener("click", () => {
+        const root = thumb.closest(".assetstore-media");
+        if (!root) return;
+
+        const image = root.querySelector(".assetstore-stage-image");
+        const video = root.querySelector(".assetstore-stage-video");
+        const src = thumb.getAttribute("data-media-src") || "";
+        const type = thumb.getAttribute("data-media-type");
+
+        root.querySelectorAll("[data-media-thumb]").forEach((node) => node.classList.remove("is-active"));
+        thumb.classList.add("is-active");
+
+        if (type === "video") {
+          if (image) image.classList.add("is-hidden");
+          if (video) {
+            video.classList.remove("is-hidden");
+            video.setAttribute("src", src);
+          }
+          return;
+        }
+
+        if (video) {
+          video.classList.add("is-hidden");
+          video.setAttribute("src", "");
+        }
+        if (image) {
+          image.classList.remove("is-hidden");
+          image.setAttribute("src", src);
+        }
+      });
+    });
+  </script>
+)}

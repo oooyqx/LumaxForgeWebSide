@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import AssetStoreProductView from "../../../components/AssetStoreProductView.astro";
+import { listAssetsDataFolders } from "../../../lib/assetsdata";
+import { TEXT, type Lang } from "../../../lib/i18n";
+
+export async function getStaticPaths() {
+  return listAssetsDataFolders().flatMap((entry) => [
+    {
+      params: { lang: "zh", slug: entry.slug },
+      props: { entry }
+    },
+    {
+      params: { lang: "en", slug: entry.slug },
+      props: { entry }
+    }
+  ]);
+}
+
+const { lang } = Astro.params as { lang: Lang; slug: string };
+const { entry } = Astro.props as { entry: ReturnType<typeof listAssetsDataFolders>[number] };
+const t = TEXT[lang];
+const summary = entry.data.descriptionText || entry.data.category || entry.folderName;
+---
+
+<BaseLayout lang={lang} title={`${entry.title} | ${t.siteName}`} description={summary}>
+  <AssetStoreProductView
+    lang={lang}
+    title={entry.title}
+    summary={summary}
+    assetStoreUrl={entry.data.assetStoreUrl}
+    assetsData={entry.data}
+  />
+</BaseLayout>

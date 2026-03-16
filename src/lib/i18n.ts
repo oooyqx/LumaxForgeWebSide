@@ -7,10 +7,16 @@ type Dictionary = {
   siteName: string;
   navHome: string;
   navProducts: string;
+  navAssetStore: string;
+  navDocs: string;
   heroTitle: string;
   heroSubtitle: string;
   productsTitle: string;
   productsSubtitle: string;
+  productsEmpty: string;
+  assetStoreTitle: string;
+  assetStoreSubtitle: string;
+  assetStoreEmpty: string;
   details: string;
   buyOnAssetStore: string;
   docs: string;
@@ -31,11 +37,17 @@ export const TEXT: Record<Lang, Dictionary> = {
   zh: {
     siteName: "LumaxForge",
     navHome: "首页",
-    navProducts: "产品",
-    heroTitle: "LumaxForgeLLC 的 Unity 工具产品官网",
-    heroSubtitle: "面向 Unity 开发者的高效率插件，支持文档、图片、视频、YouTube 内容统一展示。",
-    productsTitle: "产品列表",
-    productsSubtitle: "所有产品来自 Asset Store，可直接跳转购买和查看文档。",
+    navProducts: "Products",
+    navAssetStore: "Asset Store",
+    navDocs: "文档",
+    heroTitle: "LumaxForge",
+    heroSubtitle: "",
+    productsTitle: "",
+    productsSubtitle: "",
+    productsEmpty: "当前还没有解决方案产品内容。",
+    assetStoreTitle: "Asset Store",
+    assetStoreSubtitle: "探索我们在 Unity Asset Store 上发布的工具和资源，助力您的游戏开发。",
+    assetStoreEmpty: "当前没有可展示的 Asset Store 产品数据。",
     details: "查看详情",
     buyOnAssetStore: "Asset Store",
     docs: "文档",
@@ -49,16 +61,22 @@ export const TEXT: Record<Lang, Dictionary> = {
     updatedText: "最近更新",
     manualTitle: "使用手册",
     chapterList: "章节目录",
-    backToProduct: "返回产品页"
+    backToProduct: "返回产品"
   },
   en: {
     siteName: "LumaxForge",
     navHome: "Home",
     navProducts: "Products",
-    heroTitle: "Official Site of LumaxForgeLLC Unity Products",
-    heroSubtitle: "High-efficiency plugins for Unity developers with unified docs, image, video, and YouTube content blocks.",
-    productsTitle: "Products",
-    productsSubtitle: "All products are from Asset Store with direct links for purchase and documentation.",
+    navAssetStore: "Asset Store",
+    navDocs: "Docs",
+    heroTitle: "LumaxForge",
+    heroSubtitle: "",
+    productsTitle: "",
+    productsSubtitle: "",
+    productsEmpty: "No solution products have been added yet.",
+    assetStoreTitle: "Asset Store",
+    assetStoreSubtitle: "Explore our tools and resources published on Unity Asset Store to power up your game development.",
+    assetStoreEmpty: "No Asset Store product data is available yet.",
     details: "View Details",
     buyOnAssetStore: "Asset Store",
     docs: "Docs",

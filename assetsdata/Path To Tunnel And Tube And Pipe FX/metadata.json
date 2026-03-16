@@ -1,0 +1,89 @@
+{
+  "pluginId": "1282162",
+  "pluginName": "Path To Tunnel & Tube & Pipe FX",
+  "status": "unknown",
+  "backupTime": "2026-03-14T02:47:17.019Z",
+  "pages": {
+    "upload": {
+      "url": "https://publisher.unity.com/packages/1282162/edit/upload",
+      "savedAt": "2026-03-14T02:47:22.739Z"
+    },
+    "description": {
+      "url": "https://publisher.unity.com/packages/1282162/edit/description",
+      "savedAt": "2026-03-14T02:47:28.876Z"
+    },
+    "release-notes": {
+      "url": "https://publisher.unity.com/packages/1282162/edit/release-notes",
+      "savedAt": "2026-03-14T02:47:34.604Z"
+    },
+    "detail": {
+      "url": "https://publisher.unity.com/packages/1282162/edit/detail",
+      "savedAt": "2026-03-14T02:47:40.315Z"
+    },
+    "media": {
+      "url": "https://publisher.unity.com/packages/1282162/edit/media",
+      "savedAt": "2026-03-14T02:47:46.457Z"
+    },
+    "localization": {
+      "url": "https://publisher.unity.com/packages/1282162/edit/localization",
+      "savedAt": "2026-03-14T02:47:55.575Z"
+    }
+  },
+  "images": [
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/9883f54b-270f-4edf-b9b0-6799b2f35b12.jpg",
+      "file": "marketing_images/Icon image.jpg",
+      "module": "marketing_images",
+      "name": "Icon image"
+    },
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/cb70ad5d-a505-480a-9bd1-27ffc6b4090b.jpg",
+      "file": "marketing_images/Card image.jpg",
+      "module": "marketing_images",
+      "name": "Card image"
+    },
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/f6cda3a7-1585-47de-a049-95428288b5c5.jpg",
+      "file": "marketing_images/Cover image.jpg",
+      "module": "marketing_images",
+      "name": "Cover image"
+    },
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/9883f54b-270f-4edf-b9b0-6799b2f35b12.jpg",
+      "file": "marketing_images/Social media image.jpg",
+      "module": "marketing_images",
+      "name": "Social media image"
+    },
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/89589f9b-c24d-4dcf-b726-4fda5e041fb4_thumb.png",
+      "file": "screenshots_videos/screenshot-bg-1.png",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-1"
+    },
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/30f13040-2ee9-4884-a7e7-03919715005c_thumb.jpg",
+      "file": "screenshots_videos/screenshot-bg-2.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-2"
+    },
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/21a5b10d-4423-46fa-b6e3-f1bb5e3d64f9_thumb.jpg",
+      "file": "screenshots_videos/screenshot-bg-3.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-3"
+    }
+  ],
+  "videos": [
+    {
+      "url": "https://youtu.be/GRVUNUWicb4",
+      "type": "embed",
+      "file": "screenshots_videos/screenshot-bg-1.txt",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-1",
+      "mediaKey": "screenshot-bg-1"
+    }
+  ],
+  "package": {
+    "note": "请手动下载 unitypackage 文件到此目录"
+  }
+}

@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import ProductCard from "../../../components/ProductCard.astro";
+import SolutionCard from "../../../components/SolutionCard.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { LANGS, TEXT, type Lang } from "../../../lib/i18n";
 
@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.params as { lang: Lang };
 const t = TEXT[lang];
-const products = (await getCollection("products", ({ data }) => data.lang === lang)).sort((a, b) =>
+const solutions = (await getCollection("solutions", ({ data }) => data.lang === lang)).sort((a, b) =>
   a.data.title.localeCompare(b.data.title)
 );
 ---
@@ -20,7 +20,13 @@ const products = (await getCollection("products", ({ data }) => data.lang === la
     <h1>{t.productsTitle}</h1>
     <p>{t.productsSubtitle}</p>
   </section>
-  <div class="products-grid">
-    {products.map((product) => <ProductCard lang={lang} product={product} />)}
-  </div>
+  {solutions.length > 0 ? (
+    <div class="products-grid">
+      {solutions.map((solution) => <SolutionCard lang={lang} solution={solution} />)}
+    </div>
+  ) : (
+    <section class="panel">
+      <p>{t.productsEmpty}</p>
+    </section>
+  )}
 </BaseLayout>

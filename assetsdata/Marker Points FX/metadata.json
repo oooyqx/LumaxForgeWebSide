@@ -1,0 +1,104 @@
+{
+  "pluginId": "1282122",
+  "pluginName": "Marker Points FX",
+  "status": "unknown",
+  "backupTime": "2026-03-14T02:41:40.898Z",
+  "pages": {
+    "upload": {
+      "url": "https://publisher.unity.com/packages/1282122/edit/upload",
+      "savedAt": "2026-03-14T02:41:46.626Z"
+    },
+    "description": {
+      "url": "https://publisher.unity.com/packages/1282122/edit/description",
+      "savedAt": "2026-03-14T02:41:52.365Z"
+    },
+    "release-notes": {
+      "url": "https://publisher.unity.com/packages/1282122/edit/release-notes",
+      "savedAt": "2026-03-14T02:41:58.115Z"
+    },
+    "detail": {
+      "url": "https://publisher.unity.com/packages/1282122/edit/detail",
+      "savedAt": "2026-03-14T02:42:04.854Z"
+    },
+    "media": {
+      "url": "https://publisher.unity.com/packages/1282122/edit/media",
+      "savedAt": "2026-03-14T02:42:10.584Z"
+    },
+    "localization": {
+      "url": "https://publisher.unity.com/packages/1282122/edit/localization",
+      "savedAt": "2026-03-14T02:42:22.960Z"
+    }
+  },
+  "images": [
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/1b82577d-19a6-46f9-b221-67dc4a936eea.jpg",
+      "file": "marketing_images/Icon image.jpg",
+      "module": "marketing_images",
+      "name": "Icon image"
+    },
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/d65ad62b-e24d-4820-a42b-8d8024ee7bbe.jpg",
+      "file": "marketing_images/Card image.jpg",
+      "module": "marketing_images",
+      "name": "Card image"
+    },
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/725ff96f-f675-4a22-b0ab-541c8e8d6a50.jpg",
+      "file": "marketing_images/Cover image.jpg",
+      "module": "marketing_images",
+      "name": "Cover image"
+    },
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/key-image/1b82577d-19a6-46f9-b221-67dc4a936eea.jpg",
+      "file": "marketing_images/Social media image.jpg",
+      "module": "marketing_images",
+      "name": "Social media image"
+    },
+    {
+      "url": "https://unity-assetstorev2-prd.storage.googleapis.com/20251201/videos/e6a746e1-e382-4058-9ca3-286b5fea5d1b/thumbnail.png",
+      "file": "screenshots_videos/screenshot-bg-1.png",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-1"
+    },
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/200b62db-b52f-422e-b1a1-6cac0265b34e_thumb.jpg",
+      "file": "screenshots_videos/screenshot-bg-2.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-2"
+    },
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/bc64e904-2d11-4bb9-9c58-2bc205f9e398_thumb.jpg",
+      "file": "screenshots_videos/screenshot-bg-3.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-3"
+    },
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/f2bf78bf-f5b6-463d-b385-5d398fa3a545_thumb.jpg",
+      "file": "screenshots_videos/screenshot-bg-4.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-4"
+    },
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/9e99761b-a53b-41e9-9c4e-108e3329c753_thumb.jpg",
+      "file": "screenshots_videos/screenshot-bg-5.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-5"
+    },
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/4bcbccb6-a91b-4879-b3aa-db3e88dcfc82_thumb.jpg",
+      "file": "screenshots_videos/screenshot-bg-6.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-6"
+    },
+    {
+      "url": "https://assetstore-cdn-china-v1.unitychina.cn/package-screenshot/6fbab57b-90af-4e6e-959c-72fec87565a0_thumb.jpg",
+      "file": "screenshots_videos/screenshot-bg-7.jpg",
+      "module": "screenshots_videos",
+      "name": "screenshot-bg-7"
+    }
+  ],
+  "videos": [],
+  "package": {
+    "note": "请手动下载 unitypackage 文件到此目录"
+  }
+}

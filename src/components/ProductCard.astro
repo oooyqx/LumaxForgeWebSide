@@ -22,7 +22,11 @@ const { productSlug, title, summary, tags, assetStoreUrl, docsUrl } = product.da
   )}
   <div class="card-actions">
     <a class="btn primary" href={`/${lang}/products/${productSlug}`}>{t.details}</a>
-    <a class="btn" href={assetStoreUrl} target="_blank" rel="noreferrer">{t.buyOnAssetStore}</a>
+    {assetStoreUrl && (
+      <a class="btn" href={assetStoreUrl} target="_blank" rel="noreferrer">
+        {t.buyOnAssetStore}
+      </a>
+    )}
     {docsUrl && (
       <a class="btn" href={docsUrl} target="_blank" rel="noreferrer">
         {t.docs}

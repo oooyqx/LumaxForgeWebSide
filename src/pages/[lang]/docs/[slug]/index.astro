@@ -1,0 +1,335 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { LANGS, TEXT, type Lang } from "../../../../lib/i18n";
+import { listDocsManuals, loadManualData, loadManualConfig } from "../../../../lib/docsdata";
+
+export async function getStaticPaths() {
+  const manuals = listDocsManuals();
+  const paths = [];
+
+  for (const manual of manuals) {
+    for (const lang of LANGS) {
+      paths.push({
+        params: { lang, slug: manual.slug },
+        props: { manual }
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { lang, slug } = Astro.params as { lang: Lang; slug: string };
+const t = TEXT[lang];
+const manualData = loadManualData(slug, lang);
+const manualConfig = loadManualConfig(slug);
+
+const title = manualConfig?.product?.name || manualData?.title || slug;
+const chapters = manualData?.chapters || [];
+const navGroups = manualConfig?.navigation?.groups || [];
+const generatedAt = manualConfig?.meta?.generatedAt || manualData?.generatedAt;
+
+// 按导航分组组织章节
+function getChaptersByGroup() {
+  if (navGroups.length === 0) {
+    return [{ key: "all", title: { zh: t.chapterList, en: t.chapterList }, chapters }];
+  }
+
+  return navGroups.map((group) => ({
+    key: group.key,
+    title: group.title,
+    chapters: group.chapters
+      .map((itemId) => chapters.find((ch) => ch.id === itemId))
+      .filter(Boolean)
+  }));
+}
+
+const groupedChapters = getChaptersByGroup();
+---
+
+<BaseLayout lang={lang} title={`${title} | ${t.navDocs}`} description={title}>
+  <div class="manual-layout">
+    <aside class="manual-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">{title}</div>
+        {generatedAt && (
+          <div class="sidebar-sub">{t.updatedText}: {generatedAt}</div>
+        )}
+      </div>
+
+      <nav class="manual-nav">
+        {groupedChapters.map((group) => (
+          <div class="nav-group" data-group={group.key}>
+            <button class="nav-group-header" type="button">
+              <span class="nav-group-toggle">▼</span>
+              <span class="nav-group-title">{group.title[lang] || group.title.zh || Object.values(group.title)[0]}</span>
+            </button>
+            <div class="nav-children">
+              <ul class="nav-list">
+                {group.chapters.map((chapter: any) => (
+                  <li>
+                    <a href={`/${lang}/docs/${slug}/${chapter.id}`}>{chapter.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </nav>
+
+      <script>
+        document.querySelectorAll('.nav-group-header').forEach(header => {
+          header.addEventListener('click', () => {
+            const group = header.closest('.nav-group');
+            if (group) {
+              group.classList.toggle('collapsed');
+            }
+          });
+        });
+      </script>
+    </aside>
+
+    <main class="manual-content">
+      <h1 class="content-title">{title}</h1>
+      <p class="manual-intro">
+        {lang === "zh" 
+          ? "选择左侧章节开始阅读文档。" 
+          : "Select a chapter from the sidebar to start reading."}
+      </p>
+
+      <div class="chapter-grid">
+        {groupedChapters.map((group) => (
+          <section class="chapter-section">
+            <h2>{group.title[lang] || group.title.zh || Object.values(group.title)[0]}</h2>
+            <ul class="chapter-list">
+              {group.chapters.map((chapter: any) => (
+                <li>
+                  <a href={`/${lang}/docs/${slug}/${chapter.id}`} class="chapter-link">
+                    {chapter.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .manual-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 0;
+    min-height: calc(100vh - 120px);
+  }
+
+  @media (max-width: 900px) {
+    .manual-layout {
+      grid-template-columns: 1fr;
+    }
+    .manual-sidebar {
+      display: none;
+    }
+  }
+
+  .manual-sidebar {
+    position: sticky;
+    top: 80px;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    padding: 0;
+    border-right: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-header {
+    padding: 14px 14px 10px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .sidebar-title {
+    font-weight: 650;
+    font-size: 1rem;
+    color: var(--fg);
+  }
+
+  .sidebar-sub {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--muted);
+    opacity: 0.7;
+  }
+
+  .manual-nav {
+    padding: 8px;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .manual-nav::-webkit-scrollbar {
+    width: 1px;
+  }
+  .manual-nav::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .manual-nav::-webkit-scrollbar-thumb {
+    background: var(--line);
+  }
+  .manual-nav::-webkit-scrollbar-thumb:hover {
+    background: var(--muted);
+  }
+
+  .nav-group {
+    margin: 6px 0;
+  }
+
+  .nav-group-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.26);
+    border: none;
+    color: var(--fg);
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .nav-group-header:hover {
+    background: rgba(0, 0, 0, 0.34);
+    color: var(--accent);
+  }
+
+  .nav-group-toggle {
+    font-size: 0.7rem;
+    opacity: 0.9;
+    transition: transform 0.2s;
+    width: 14px;
+    flex: 0 0 14px;
+  }
+
+  .nav-group.collapsed .nav-group-toggle {
+    transform: rotate(-90deg);
+  }
+
+  .nav-group-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+
+  .nav-children {
+    padding-left: 20px;
+    margin-top: 2px;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+
+  .nav-group.collapsed .nav-children {
+    max-height: 0 !important;
+  }
+
+  .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-list li {
+    margin: 4px 0;
+  }
+
+  .nav-list a {
+    display: block;
+    padding: 10px 10px;
+    color: var(--muted);
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.25;
+    opacity: 0.92;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .nav-list a:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--fg);
+  }
+
+  .manual-content {
+    padding: 24px 24px;
+    max-width: 1120px;
+    overflow: auto;
+  }
+
+  .manual-content::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .manual-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .manual-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+  }
+  .manual-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .content-title {
+    font-size: 28px;
+    line-height: 1.25;
+    margin: 0 0 18px 0;
+    color: var(--fg);
+  }
+
+  .manual-intro {
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .chapter-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .chapter-section h2 {
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin: 0 0 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .chapter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .chapter-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--fg);
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .chapter-link:hover {
+    border-color: var(--accent);
+    transform: translateX(4px);
+  }
+</style>

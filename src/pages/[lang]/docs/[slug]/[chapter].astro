@@ -1,0 +1,586 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { LANGS, TEXT, type Lang } from "../../../../lib/i18n";
+import { listDocsManuals, loadManualData, loadManualConfig } from "../../../../lib/docsdata";
+
+export async function getStaticPaths() {
+  const manuals = listDocsManuals();
+  const paths = [];
+
+  for (const manual of manuals) {
+    for (const lang of LANGS) {
+      const data = loadManualData(manual.slug, lang);
+      if (!data) continue;
+
+      for (const chapter of data.chapters) {
+        paths.push({
+          params: { lang, slug: manual.slug, chapter: chapter.id },
+          props: { manual, chapter }
+        });
+      }
+    }
+  }
+
+  return paths;
+}
+
+const { lang, slug, chapter: chapterId } = Astro.params as { lang: Lang; slug: string; chapter: string };
+const t = TEXT[lang];
+const manualData = loadManualData(slug, lang);
+const manualConfig = loadManualConfig(slug);
+
+const manualTitle = manualConfig?.product?.name || manualData?.title || slug;
+const chapters = manualData?.chapters || [];
+const navGroups = manualConfig?.navigation?.groups || [];
+const generatedAt = manualConfig?.meta?.generatedAt || manualData?.generatedAt;
+const currentChapter = chapters.find((ch) => ch.id === chapterId);
+
+// 找到上一章和下一章
+const flatChapters = navGroups.length > 0
+  ? navGroups.flatMap((g) => g.chapters.map((id) => chapters.find((ch) => ch.id === id)).filter(Boolean))
+  : chapters;
+
+const currentIndex = flatChapters.findIndex((ch: any) => ch.id === chapterId);
+const prevChapter = currentIndex > 0 ? flatChapters[currentIndex - 1] : null;
+const nextChapter = currentIndex < flatChapters.length - 1 ? flatChapters[currentIndex + 1] : null;
+
+// 按导航分组组织章节
+function getChaptersByGroup() {
+  if (navGroups.length === 0) {
+    return [{ key: "all", title: { zh: t.chapterList, en: t.chapterList }, chapters }];
+  }
+
+  return navGroups.map((group) => ({
+    key: group.key,
+    title: group.title,
+    chapters: group.chapters
+      .map((itemId) => chapters.find((ch) => ch.id === itemId))
+      .filter(Boolean)
+  }));
+}
+
+const groupedChapters = getChaptersByGroup();
+
+// Markdown 转 HTML（参照原始 ManualWeb 逻辑，忽略多余空行）
+function markdownToHtml(md: string): string {
+  if (!md) return "";
+  
+  const lines = md.replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n');
+  let inCode = false;
+  let inUl = false;
+  let inOl = false;
+  let para = '';
+  const parts: string[] = [];
+
+  function escapeHtml(s: string) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function inlineToHtml(text: string) {
+    if (!text) return '';
+    let out = escapeHtml(text);
+    out = out.replace(/`([^`]+)`/g, '<code>$1</code>');
+    out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    out = out.replace(/(^|[^*])\*([^*]+)\*([^*]|$)/g, '$1<em>$2</em>$3');
+    out = out.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+    return out;
+  }
+
+  function flushPara() {
+    if (!para.trim()) return;
+    parts.push(`<p>${inlineToHtml(para.trim())}</p>`);
+    para = '';
+  }
+
+  function closeLists() {
+    if (inUl) { parts.push('</ul>'); inUl = false; }
+    if (inOl) { parts.push('</ol>'); inOl = false; }
+  }
+
+  for (let i = 0; i < lines.length; i++) {
+    const raw = lines[i] || '';
+    const t = raw.replace(/\s+$/, '');
+
+    if (t.trimStart().startsWith('```')) {
+      if (!inCode) {
+        flushPara();
+        closeLists();
+        inCode = true;
+        parts.push('<pre><code>');
+      } else {
+        inCode = false;
+        parts.push('</code></pre>');
+      }
+      continue;
+    }
+
+    if (inCode) {
+      parts.push(escapeHtml(t) + '\n');
+      continue;
+    }
+
+    if (!t.trim()) {
+      flushPara();
+      closeLists();
+      continue;
+    }
+
+    if (t.startsWith('>')) {
+      flushPara();
+      closeLists();
+      const qt = t.replace(/^>\s?/, '').trim();
+      parts.push(`<blockquote>${inlineToHtml(qt)}</blockquote>`);
+      continue;
+    }
+
+    if (t.startsWith('---')) {
+      flushPara();
+      closeLists();
+      parts.push('<hr/>');
+      continue;
+    }
+
+    if (t.startsWith('#')) {
+      flushPara();
+      closeLists();
+      let level = 0;
+      while (level < t.length && t[level] === '#') level++;
+      level = Math.max(1, Math.min(3, level));
+      const text = t.slice(level).trim();
+      parts.push(`<h${level}>${inlineToHtml(text)}</h${level}>`);
+      continue;
+    }
+
+    if (t.startsWith('- ') || t.startsWith('* ')) {
+      flushPara();
+      if (inOl) { parts.push('</ol>'); inOl = false; }
+      if (!inUl) { parts.push('<ul>'); inUl = true; }
+      parts.push(`<li>${inlineToHtml(t.slice(2).trim())}</li>`);
+      continue;
+    }
+
+    const m = t.match(/^(\d+)\.\s+(.+)$/);
+    if (m) {
+      flushPara();
+      if (inUl) { parts.push('</ul>'); inUl = false; }
+      if (!inOl) { parts.push('<ol>'); inOl = true; }
+      parts.push(`<li>${inlineToHtml(m[2].trim())}</li>`);
+      continue;
+    }
+
+    // 连续非空行合并为一个段落
+    para += (para ? ' ' : '') + t.trim();
+  }
+
+  flushPara();
+  closeLists();
+  if (inCode) parts.push('</code></pre>');
+
+  return parts.join('');
+}
+---
+
+<BaseLayout lang={lang} title={`${currentChapter?.title || chapterId} | ${manualTitle}`} description={currentChapter?.title}>
+  <div class="manual-layout">
+    <aside class="manual-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">{manualTitle}</div>
+        {generatedAt && (
+          <div class="sidebar-sub">{t.updatedText}: {generatedAt}</div>
+        )}
+      </div>
+
+      <nav class="manual-nav">
+        {groupedChapters.map((group) => (
+          <div class="nav-group" data-group={group.key}>
+            <button class="nav-group-header" type="button">
+              <span class="nav-group-toggle">▼</span>
+              <span class="nav-group-title">{group.title[lang] || group.title.zh || Object.values(group.title)[0]}</span>
+            </button>
+            <div class="nav-children">
+              <ul class="nav-list">
+                {group.chapters.map((chapter: any) => (
+                  <li>
+                    <a 
+                      href={`/${lang}/docs/${slug}/${chapter.id}`}
+                      class:list={[{ active: chapter.id === chapterId }]}
+                    >
+                      {chapter.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </nav>
+
+      <script>
+        document.querySelectorAll('.nav-group-header').forEach(header => {
+          header.addEventListener('click', () => {
+            const group = header.closest('.nav-group');
+            if (group) {
+              group.classList.toggle('collapsed');
+            }
+          });
+        });
+      </script>
+    </aside>
+
+    <main class="manual-content">
+      {currentChapter ? (
+        <>
+          <article class="chapter-article" set:html={markdownToHtml(currentChapter.content)} />
+
+          <nav class="chapter-nav">
+            {prevChapter && (
+              <a href={`/${lang}/docs/${slug}/${(prevChapter as any).id}`} class="nav-prev">
+                <span class="nav-label">← {lang === "zh" ? "上一章" : "Previous"}</span>
+                <span class="nav-title">{(prevChapter as any).title}</span>
+              </a>
+            )}
+            {nextChapter && (
+              <a href={`/${lang}/docs/${slug}/${(nextChapter as any).id}`} class="nav-next">
+                <span class="nav-label">{lang === "zh" ? "下一章" : "Next"} →</span>
+                <span class="nav-title">{(nextChapter as any).title}</span>
+              </a>
+            )}
+          </nav>
+        </>
+      ) : (
+        <p>{lang === "zh" ? "章节未找到" : "Chapter not found"}</p>
+      )}
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .manual-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 0;
+    min-height: calc(100vh - 120px);
+  }
+
+  @media (max-width: 900px) {
+    .manual-layout {
+      grid-template-columns: 1fr;
+    }
+    .manual-sidebar {
+      display: none;
+    }
+  }
+
+  .manual-sidebar {
+    position: sticky;
+    top: 80px;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    padding: 0;
+    border-right: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-header {
+    padding: 14px 14px 10px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .sidebar-title {
+    font-weight: 650;
+    font-size: 1rem;
+    color: var(--fg);
+  }
+
+  .sidebar-sub {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--muted);
+    opacity: 0.7;
+  }
+
+  .manual-nav {
+    padding: 8px;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .manual-nav::-webkit-scrollbar {
+    width: 1px;
+  }
+  .manual-nav::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .manual-nav::-webkit-scrollbar-thumb {
+    background: var(--line);
+  }
+  .manual-nav::-webkit-scrollbar-thumb:hover {
+    background: var(--muted);
+  }
+
+  .nav-group {
+    margin: 6px 0;
+  }
+
+  .nav-group-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.26);
+    border: none;
+    color: var(--fg);
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .nav-group-header:hover {
+    background: rgba(0, 0, 0, 0.34);
+    color: var(--accent);
+  }
+
+  .nav-group-toggle {
+    font-size: 0.7rem;
+    opacity: 0.9;
+    transition: transform 0.2s;
+    width: 14px;
+    flex: 0 0 14px;
+  }
+
+  .nav-group.collapsed .nav-group-toggle {
+    transform: rotate(-90deg);
+  }
+
+  .nav-group-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+
+  .nav-children {
+    padding-left: 20px;
+    margin-top: 2px;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+
+  .nav-group.collapsed .nav-children {
+    max-height: 0 !important;
+  }
+
+  .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-list li {
+    margin: 4px 0;
+  }
+
+  .nav-list a {
+    display: block;
+    padding: 10px 10px;
+    color: var(--muted);
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.25;
+    opacity: 0.92;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .nav-list a:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--fg);
+  }
+
+  .nav-list a.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent);
+  }
+
+  .manual-content {
+    padding: 24px 24px;
+    max-width: 1120px;
+    overflow: auto;
+  }
+
+  .manual-content::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .manual-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .manual-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+  }
+  .manual-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .chapter-article {
+    line-height: 1.75;
+    --content-indent: 1.5em;
+    color: #d1d5db;
+  }
+
+  .chapter-article :global(h1) {
+    font-size: 28px;
+    line-height: 1.25;
+    margin: 0 0 18px 0;
+    color: #ffffff;
+  }
+
+  .chapter-article :global(h2) {
+    font-size: 20px;
+    line-height: 1.35;
+    margin: 30px 0 16px 0;
+    color: #ffffff;
+  }
+
+  .chapter-article :global(h3) {
+    font-size: 16px;
+    line-height: 1.35;
+    margin: 22px 0 14px 0;
+    color: #ffffff;
+  }
+
+  .chapter-article :global(p) {
+    margin: 8px 0;
+    margin-left: var(--content-indent);
+    line-height: 1.75;
+    color: #d1d5db;
+  }
+
+  .chapter-article :global(ul),
+  .chapter-article :global(ol) {
+    margin: 10px 0 10px 22px;
+    margin-left: calc(var(--content-indent) + 22px);
+    padding: 0;
+  }
+
+  .chapter-article :global(li) {
+    margin: 6px 0;
+    line-height: 1.6;
+  }
+
+  .chapter-article :global(li p) {
+    margin: 0;
+  }
+
+  .chapter-article :global(code) {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    font-size: 0.95em;
+  }
+
+  .chapter-article :global(pre) {
+    background: rgba(32, 33, 35, 1);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 14px;
+    overflow: auto;
+    line-height: 1.55;
+    margin: 12px 0;
+    margin-left: var(--content-indent);
+  }
+
+  .chapter-article :global(pre code) {
+    display: block;
+    background: none;
+    border: none;
+    padding: 0;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .chapter-article :global(blockquote) {
+    margin: 12px 0;
+    margin-left: var(--content-indent);
+    padding: 10px 12px;
+    border-left: 3px solid rgba(16, 163, 127, 0.4);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    color: var(--muted);
+  }
+
+  .chapter-article :global(a) {
+    color: #4ea3ff;
+    text-decoration: none;
+  }
+
+  .chapter-article :global(a:hover) {
+    text-decoration: underline;
+  }
+
+  .chapter-article :global(hr) {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 18px 0;
+    margin-left: var(--content-indent);
+  }
+
+  .chapter-article :global(strong) {
+    font-weight: 600;
+  }
+
+  .chapter-article :global(img) {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 12px 0;
+    margin-left: var(--content-indent);
+  }
+
+  .chapter-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .nav-prev,
+  .nav-next {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+    max-width: 45%;
+  }
+
+  .nav-prev:hover,
+  .nav-next:hover {
+    border-color: var(--accent);
+  }
+
+  .nav-next {
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .nav-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .nav-title {
+    font-weight: 500;
+    color: var(--fg);
+    margin-top: 0.25rem;
+  }
+</style>

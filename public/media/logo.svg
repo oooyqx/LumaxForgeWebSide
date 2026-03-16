@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="LumaxForge">
+  <defs>
+    <linearGradient id="g" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2dd4bf"/>
+      <stop offset="1" stop-color="#5fb3ff"/>
+    </linearGradient>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <path filter="url(#s)" d="M32 6c9 0 17 7 18 16 1 10-7 17-12 22-2 2-4 5-6 9-2-4-4-7-6-9-5-5-13-12-12-22C15 13 23 6 32 6Z" fill="url(#g)"/>
+  <path d="M24 28h16l-8 18-2-8h-6l0-10Z" fill="rgba(0,0,0,.28)"/>
+  <path d="M26 27h12l-6 15-1.4-6.2H26V27Z" fill="rgba(255,255,255,.86)"/>
+</svg>
+

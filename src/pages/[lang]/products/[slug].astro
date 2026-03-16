@@ -2,70 +2,169 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { mdxComponents } from "../../../components/mdx-components";
+import AssetStoreProductView from "../../../components/AssetStoreProductView.astro";
+import { loadAssetsData } from "../../../lib/assetsdata";
 import { TEXT, type Lang } from "../../../lib/i18n";
 
 export async function getStaticPaths() {
-  const entries = await getCollection("products");
-  return entries.map((entry) => ({
-    params: { lang: entry.data.lang, slug: entry.data.productSlug },
-    props: { entry }
-  }));
+  const solutions = await getCollection("solutions");
+  const products = await getCollection("products");
+
+  return [
+    ...solutions.map((entry) => ({
+      params: { lang: entry.data.lang, slug: entry.data.solutionSlug },
+      props: { kind: "solution" as const, entry }
+    })),
+    ...products.map((entry) => ({
+      params: { lang: entry.data.lang, slug: entry.data.productSlug },
+      props: { kind: "product" as const, entry }
+    }))
+  ];
 }
 
+type SolutionEntry = Awaited<ReturnType<typeof getCollection<"solutions">>>[number];
+type ProductEntry = Awaited<ReturnType<typeof getCollection<"products">>>[number];
+
 const { lang } = Astro.params as { lang: Lang; slug: string };
-const { entry } = Astro.props;
+const props = Astro.props as { kind: "solution"; entry: SolutionEntry } | { kind: "product"; entry: ProductEntry };
 const t = TEXT[lang];
-const { Content } = await entry.render();
-const data = entry.data;
+const isSolution = props.kind === "solution";
+const solutionEntry = isSolution ? props.entry : undefined;
+const productEntry = !isSolution ? props.entry : undefined;
+
+const rendered = await props.entry.render();
+const Content = rendered.Content;
+
+const solutionData = solutionEntry?.data;
+const productData = productEntry?.data;
+const isEasyChartLit = productData?.productSlug === "easy-chart-lit";
+const assetsData = productData?.assetDataFolder ? loadAssetsData(productData.assetDataFolder) : undefined;
+const pageTitle = solutionData?.title || productData?.title || t.siteName;
+const pageSummary = solutionData?.summary || productData?.summary || assetsData?.descriptionText;
 ---
 
-<BaseLayout lang={lang} title={`${data.title} | ${t.siteName}`} description={data.summary}>
-  <section class="hero">
-    <h1>{data.title}</h1>
-    <p>{data.summary}</p>
-    {data.tags.length > 0 && (
-      <div class="chip-row">
-        {data.tags.map((tag: string) => <span class="chip">{tag}</span>)}
-      </div>
-    )}
-  </section>
+<BaseLayout
+  lang={lang}
+  title={`${pageTitle} | ${t.siteName}`}
+  description={pageSummary}
+  bodyClass={!isSolution && isEasyChartLit ? "docs-theme" : undefined}
+>
+  {isSolution && solutionData ? (
+    <>
+      <section class="hero">
+        <h1>{solutionData.title}</h1>
+        <p>{solutionData.summary}</p>
+        {(solutionData.tags.length > 0 || solutionData.industries.length > 0) && (
+          <div class="chip-row">
+            {[...solutionData.industries, ...solutionData.tags].map((tag) => <span class="chip">{tag}</span>)}
+          </div>
+        )}
+      </section>
 
-  <div class="two-col">
-    <article class="panel prose">
-      <Content components={mdxComponents} />
-    </article>
-    <aside class="panel">
-      <h3>{t.productInfo}</h3>
-      <ul class="meta-list">
-        {data.version && (
-          <li>
-            <strong>{t.productVersion}:</strong> {data.version}
-          </li>
-        )}
-        {data.unityVersion && (
-          <li>
-            <strong>{t.productUnity}:</strong> {data.unityVersion}
-          </li>
-        )}
-        {data.price && (
-          <li>
-            <strong>{t.productPrice}:</strong> {data.price}
-          </li>
-        )}
-        {data.updatedAt && (
-          <li>
-            <strong>{t.productUpdated}:</strong> {data.updatedAt}
-          </li>
-        )}
-      </ul>
-      <div class="card-actions" style="margin-top: 1rem;">
-        <a class="btn primary" href={data.assetStoreUrl} target="_blank" rel="noreferrer">{t.buyOnAssetStore}</a>
-        {data.docsUrl && (
-          <a class="btn" href={data.docsUrl} target="_blank" rel="noreferrer">
-            {t.docs}
-          </a>
-        )}
+      <div class="two-col">
+        <article class="panel prose">
+          <Content components={mdxComponents} />
+        </article>
+        <aside class="panel">
+          <h3>{t.productInfo}</h3>
+          <ul class="meta-list">
+            {solutionData.industries.length > 0 && (
+              <li>
+                <strong>Industry:</strong> {solutionData.industries.join(", ")}
+              </li>
+            )}
+            {solutionData.capabilities.length > 0 && (
+              <li>
+                <strong>Capabilities:</strong> {solutionData.capabilities.slice(0, 4).join(" / ")}
+              </li>
+            )}
+            {solutionData.updatedAt && (
+              <li>
+                <strong>{t.productUpdated}:</strong> {String(solutionData.updatedAt)}
+              </li>
+            )}
+          </ul>
+          {solutionData.ctaHref && (
+            <div class="card-actions" style="margin-top: 1rem;">
+              <a class="btn primary" href={solutionData.ctaHref}>
+                {solutionData.ctaLabel || "Learn More"}
+              </a>
+            </div>
+          )}
+        </aside>
       </div>
-    </aside>
-  </div>
+    </>
+  ) : productData ? (
+    assetsData ? (
+      <>
+        <AssetStoreProductView
+          lang={lang}
+          title={productData.title}
+          summary={pageSummary}
+          assetStoreUrl={productData.assetStoreUrl}
+          docsUrl={productData.docsUrl}
+          tags={productData.tags}
+          assetsData={assetsData}
+        />
+        <article class="panel prose assetstore-prose">
+          <Content components={mdxComponents} />
+        </article>
+      </>
+    ) : (
+      <>
+        <section class="hero">
+          <h1>{productData.title}</h1>
+          <p>{productData.summary}</p>
+          {productData.tags.length > 0 && (
+            <div class="chip-row">
+              {productData.tags.map((tag) => <span class="chip">{tag}</span>)}
+            </div>
+          )}
+        </section>
+
+        <div class="two-col">
+          <article class="panel prose">
+            <Content components={mdxComponents} />
+          </article>
+          <aside class="panel">
+            <h3>{t.productInfo}</h3>
+            <ul class="meta-list">
+              {productData.version && (
+                <li>
+                  <strong>{t.productVersion}:</strong> {productData.version}
+                </li>
+              )}
+              {productData.unityVersion && (
+                <li>
+                  <strong>{t.productUnity}:</strong> {productData.unityVersion}
+                </li>
+              )}
+              {productData.price && (
+                <li>
+                  <strong>{t.productPrice}:</strong> {productData.price}
+                </li>
+              )}
+              {productData.updatedAt && (
+                <li>
+                  <strong>{t.productUpdated}:</strong> {String(productData.updatedAt)}
+                </li>
+              )}
+            </ul>
+            <div class="card-actions" style="margin-top: 1rem;">
+              {productData.assetStoreUrl && (
+                <a class="btn primary" href={productData.assetStoreUrl} target="_blank" rel="noreferrer">
+                  {t.buyOnAssetStore}
+                </a>
+              )}
+              {productData.docsUrl && (
+                <a class="btn" href={productData.docsUrl} target="_blank" rel="noreferrer">
+                  {t.docs}
+                </a>
+              )}
+            </div>
+          </aside>
+        </div>
+      </>
+    )
+  ) : null}
 </BaseLayout>

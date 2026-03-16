@@ -1,7 +1,6 @@
 ---
-import { getCollection } from "astro:content";
-import ProductCard from "../../components/ProductCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { listAssetsDataFolders } from "../../lib/assetsdata";
 import { LANGS, TEXT, type Lang } from "../../lib/i18n";
 
 export async function getStaticPaths() {
@@ -10,28 +9,39 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.params as { lang: Lang };
 const t = TEXT[lang];
-const products = (await getCollection("products", ({ data }) => data.lang === lang)).sort((a, b) =>
-  a.data.title.localeCompare(b.data.title)
-);
+const assets = listAssetsDataFolders();
 ---
 
-<BaseLayout lang={lang} title={`${t.siteName} | ${t.navHome}`} description={t.heroSubtitle}>
-  <section class="hero">
-    <h1>{t.heroTitle}</h1>
-    <p>{t.heroSubtitle}</p>
-    <div class="chip-row">
-      <span class="chip">Astro SSG</span>
-      <span class="chip">Cloudflare Pages</span>
-      <span class="chip">MDX</span>
-      <span class="chip">Asset Store Plugins</span>
-    </div>
-  </section>
-
+<BaseLayout lang={lang} title={`${t.siteName} | ${t.navHome}`} description={t.assetStoreSubtitle}>
   <section>
-    <h2>{t.productsTitle}</h2>
-    <p>{t.productsSubtitle}</p>
-    <div class="products-grid">
-      {products.map((product) => <ProductCard lang={lang} product={product} />)}
+    <div class="product-carousel-head">
+      <div>
+        <h2 class="product-carousel-title">{t.assetStoreTitle}</h2>
+        <p class="product-carousel-subtitle">{t.assetStoreSubtitle}</p>
+      </div>
+      <a class="btn" href={`/${lang}/asset-store`}>
+        {t.details}
+      </a>
     </div>
+    {assets.length > 0 ? (
+      <div class="products-grid">
+        {assets.slice(0, 8).map((asset) => (
+          <a class="asset-card" href={`/${lang}/asset-store/${asset.slug}`} title={asset.data.descriptionText || asset.data.category || asset.folderName}>
+            <div class="asset-card-image-wrapper">
+              {asset.data.cardImage ? (
+                <img class="asset-card-image" src={asset.data.cardImage} alt={asset.title} loading="lazy" decoding="async" />
+              ) : (
+                <div class="asset-card-placeholder"></div>
+              )}
+              <h3 class="asset-card-title">{asset.title}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <section class="panel">
+        <p>{t.assetStoreEmpty}</p>
+      </section>
+    )}
   </section>
 </BaseLayout>

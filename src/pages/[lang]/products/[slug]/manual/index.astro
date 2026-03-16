@@ -23,9 +23,42 @@ if (chapters.length === 0) {
 }
 
 const first = chapters[0];
+
+const groupTitles: Record<Lang, Record<string, string>> = {
+  zh: {
+    "00": "上手与工作流",
+    "01": "编辑器工作流",
+    "02": "编辑器面板",
+    "03": "Series 配置",
+    "04": "参考与 FAQ",
+    "05": "更新与规划"
+  },
+  en: {
+    "00": "Getting Started",
+    "01": "Editor Workflow",
+    "02": "Editor Panels",
+    "03": "Series Setup",
+    "04": "Reference & FAQ",
+    "05": "Updates"
+  }
+};
+
+const getGroupKey = (chapterSlug: string) => chapterSlug.split("_")[0];
+const groups = Object.entries(
+  chapters.reduce<Record<string, typeof chapters>>((acc, ch) => {
+    const k = getGroupKey(ch.data.chapterSlug);
+    (acc[k] ||= []).push(ch);
+    return acc;
+  }, {})
+).sort(([a], [b]) => a.localeCompare(b));
 ---
 
-<BaseLayout lang={lang} title={`${slug} ${t.manualTitle} | ${t.siteName}`} description={t.manualTitle}>
+<BaseLayout
+  lang={lang}
+  title={`${slug} ${t.manualTitle} | ${t.siteName}`}
+  description={t.manualTitle}
+  bodyClass={slug === "easy-chart-lit" ? "docs-theme" : undefined}
+>
   <section class="hero">
     <h1>{slug} {t.manualTitle}</h1>
     <p>{t.chapterList}</p>
@@ -37,9 +70,23 @@ const first = chapters[0];
   <div class="manual-layout">
     <aside class="panel chapter-nav">
       <h3>{t.chapterList}</h3>
-      {chapters.map((chapter) => (
-        <a href={`/${lang}/products/${slug}/manual/${chapter.data.chapterSlug}`}>{chapter.data.title}</a>
-      ))}
+      <nav class="chapter-tree" aria-label={t.chapterList}>
+        {groups.map(([groupKey, items], idx) => {
+          const label = groupTitles[lang]?.[groupKey] ?? groupKey;
+          return (
+            <details class="chapter-group" open={idx === 0}>
+              <summary class="chapter-group-title">{label}</summary>
+              <div class="chapter-group-items">
+                {items.map((chapter) => (
+                  <a class="chapter-link" href={`/${lang}/products/${slug}/manual/${chapter.data.chapterSlug}`}>
+                    {chapter.data.title}
+                  </a>
+                ))}
+              </div>
+            </details>
+          );
+        })}
+      </nav>
     </aside>
 
     <article class="panel prose">
