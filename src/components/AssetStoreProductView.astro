@@ -23,7 +23,9 @@ const galleryItems = [
     stageSrc: image.linkedVideoUrl ?? image.url,
     thumbSrc: image.previewUrl ?? image.url,
     fullImageSrc: image.url,
-    label: image.fileName || image.kind
+    label: image.fileName || image.kind,
+    // 大图使用原始图片URL，不使用预览图
+    displaySrc: image.linkedVideoUrl ?? image.url
   })),
   ...standaloneVideos.map((video, index) => ({
     id: `video-${index}`,
@@ -54,7 +56,7 @@ const hasRichContent = Boolean(assetsData.descriptionHtml || assetsData.technica
           <>
             <img
               class:list={["assetstore-stage-image", initialMedia.type !== "image" && "is-hidden"]}
-              src={initialMedia.type === "image" ? initialMedia.stageSrc : undefined}
+              src={initialMedia.type === "image" ? initialMedia.fullImageSrc : undefined}
               alt={title}
               loading="eager"
               decoding="async"
@@ -83,7 +85,7 @@ const hasRichContent = Boolean(assetsData.descriptionHtml || assetsData.technica
               class:list={["assetstore-thumb", "assetstore-thumb-button", index === 0 && "is-active"]}
               data-media-thumb
               data-media-type={item.type}
-              data-media-src={item.stageSrc}
+              data-media-src={item.type === "image" ? item.fullImageSrc : item.stageSrc}
               aria-label={item.type === "video" ? `Play ${item.label}` : `View ${item.label}`}
             >
               {item.thumbSrc ? (
