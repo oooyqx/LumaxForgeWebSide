@@ -43,8 +43,16 @@ const navItems = [
     <ParticleBackground />
     <header class="site-header">
       <div class="container site-header-inner">
-        <a class="brand" href={`/${lang}`} aria-label="LumaxForge Home">
-          <img class="brand-logo" src="/brand/lumaxforge-logo.png" width="36" height="36" alt="LumaxForge logo" />
+        <nav class="main-nav main-nav-left">
+          {
+            navItems.slice(0, 2).map((item) => (
+              <a href={item.href} aria-current={path === item.href ? "page" : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+        <a class="brand brand-center" href={`/${lang}`} aria-label="LumaxForge Home" id="header-brand">
           <img
             class="brand-wordmark"
             src="/brand/lumaxforge-wordmark.png"
@@ -52,25 +60,26 @@ const navItems = [
             height="28"
             alt="LumaxForge"
           />
+          <img class="brand-logo brand-logo-float" src="/brand/lumaxforge-logo.png" width="64" height="64" alt="LumaxForge logo" id="header-logo" />
         </a>
-        <nav class="main-nav">
+        <nav class="main-nav main-nav-right">
           {
-            navItems.map((item) => (
+            navItems.slice(2).map((item) => (
               <a href={item.href} aria-current={path === item.href ? "page" : undefined}>
                 {item.label}
               </a>
             ))
           }
+          <div class="lang-switch">
+            {
+              LANGS.map((l) => (
+                <a href={isPathForLang(l)} aria-current={String(l === lang)}>
+                  {l.toUpperCase()}
+                </a>
+              ))
+            }
+          </div>
         </nav>
-        <div class="lang-switch">
-          {
-            LANGS.map((l) => (
-              <a href={isPathForLang(l)} aria-current={String(l === lang)}>
-                {l.toUpperCase()}
-              </a>
-            ))
-          }
-        </div>
       </div>
     </header>
     <main>

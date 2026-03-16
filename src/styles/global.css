@@ -124,12 +124,31 @@ body.docs-theme .site-header {
   min-width: 0;
 }
 
+.brand-center {
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
 .brand-logo {
   width: 52px;
   height: 52px;
   display: block;
   object-fit: contain;
   flex: 0 0 auto;
+}
+
+.brand-logo-float {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 64px;
+  margin-top: -8px;
+  z-index: 30;
+  filter: drop-shadow(0 0 12px rgba(78, 163, 255, 0.4));
 }
 
 .brand-wordmark {
@@ -148,6 +167,17 @@ body.docs-theme .brand-wordmark {
   display: flex;
   gap: 0.6rem;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+.main-nav-left {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.main-nav-right {
+  flex: 1;
+  justify-content: flex-start;
 }
 
 .main-nav a {
