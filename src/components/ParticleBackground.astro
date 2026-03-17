@@ -34,22 +34,22 @@ const particleImages = [
 
 <script define:vars={{ particleImages }}>
   const container = document.getElementById('particle-bg');
-  const logoEl = document.getElementById('header-logo');
   
   if (container) {
     const particleCount = 25;
     const particles = [];
-    const particleSize = 28;
+    const particleSize = 14;
 
     function getLogoCenter() {
+      const logoEl = document.getElementById('header-logo');
       if (logoEl) {
         const rect = logoEl.getBoundingClientRect();
         return {
           x: rect.left + rect.width / 2,
-          y: rect.top + rect.height / 2
+          y: rect.top + rect.height * 0.25 + 30
         };
       }
-      return { x: window.innerWidth / 2, y: 68 };
+      return { x: window.innerWidth / 2, y: 98 };
     }
 
     function getRandomEdgePosition() {
@@ -97,8 +97,8 @@ const particleImages = [
         y: start.y,
         dirX: dirX,
         dirY: dirY,
-        speed: 1 + Math.random() * 2,
-        acceleration: 0.08 + Math.random() * 0.06,
+        speed: 0.3 + Math.random() * 0.6,
+        acceleration: 0.02 + Math.random() * 0.02,
         targetX: target.x,
         targetY: target.y,
         opacity: 0,
@@ -177,11 +177,13 @@ const particleImages = [
       requestAnimationFrame(animate);
     }
 
-    for (let i = 0; i < particleCount; i++) {
-      createParticle();
-    }
-    
-    requestAnimationFrame(animate);
+    // 延迟初始化，确保 Logo 已渲染
+    setTimeout(() => {
+      for (let i = 0; i < particleCount; i++) {
+        createParticle();
+      }
+      requestAnimationFrame(animate);
+    }, 100);
     
     window.addEventListener('resize', () => {
       particles.forEach(p => {
